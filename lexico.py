@@ -69,7 +69,7 @@ def t_ID(t):
     return t
 
 def t_STRING(t):
-    r'["][a-zA-Z0-9\s]["]+'
+    r'^"[a-zA-Z0-9\s]*"$'
     return t
 
 # Define a rule so we can track line numbers
