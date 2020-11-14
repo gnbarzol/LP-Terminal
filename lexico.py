@@ -8,9 +8,12 @@ reserved = {
     'end':'END',
     'and':'AND',
     'or':'OR',
-    'in': 'IN'
-
-
+    'in': 'IN',
+    'do': 'DO',
+    'false': 'FALSE',
+    'true': 'TRUE',
+    'puts': 'PUTS',
+    'gets': 'GETS'
  }
 # List of token names. This is always required
 tokens = [
@@ -30,18 +33,18 @@ tokens = [
     'ARGT',
     'EXPONENTIATION',
     'LOGIC_AND',
-    'COMMA'
+    'LOGIC_OR',
+    'LOGIC_NOT',
+    'COMMA',
+    'FLOAT',
+
 ]+list(reserved.values())
 
 
 
-def analyze(data):
-    lexer.input(data)
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break  # No more input
-        print(tok)
+ # A string containing ignored characters (spaces and tabs)
+t_ignore = ' \t'
+
 
 # Regular expression rules for simple tokens
 t_NUMBER = r'\d+'
@@ -51,15 +54,17 @@ t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_ASIGN = r'='
 t_GREATER = r'>'
 t_MINOR = r'<'
 t_ALFT = r'\['
 t_ARGT = r'\]'
 t_EXPONENTIATION = r'\*\*'
 t_LOGIC_AND = r'&&'
+t_LOGIC_OR = r'\|\|'
+t_LOGIC_NOT = r'!'
 t_COMMA = r'\,'
-
+t_ASIGN = r'='
+t_ignore_COMMENT = r'\#.*'
 
 # A regular expression rule with some action code
 
@@ -69,19 +74,19 @@ def t_ID(t):
     return t
 
 def t_STRING(t):
-    r'^"[a-zA-Z0-9\s]*"$'
+    r'\".*?\"'
+    t.value = t.value[1:-1] # remuevo las comillas
+    return t 
+
+def t_FLOAT(t):
+    r'\d+\.\d+'
+    t.value = float(t.value)
     return t
 
 # Define a rule so we can track line numbers
 def t_newline(t):
  r'\n+'
  t.lexer.lineno += len(t.value)
-
- # A string containing ignored characters (spaces and tabs)
-
-
-t_ignore = ' \t'
-
 
 # Error handling rule
 def t_error(t):
@@ -92,10 +97,19 @@ def t_error(t):
 # Build the lexer
 lexer = lex.lex()
 
+def analyze(data):
+    lexer.input(data)
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break  # No more input
+        print(tok)
 
+
+archivo = open("codigo.txt")
 # Tokenize
-while True:
-    data = input(">>>")
-    analyze(data)
-    if len(data)==0:
+for line in archivo:
+    print(">>>"+ line)
+    analyze(line)
+    if len(line)==0:
         break

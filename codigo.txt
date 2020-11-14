@@ -1,0 +1,14 @@
+#Start Gary Barzola
+
+for i in lista do
+  puts i
+end
+
+puts "Hola mundo"
+
+flotante = 3.4
+
+booleano = true
+
+booleano = false
+#End Gary Barzola
