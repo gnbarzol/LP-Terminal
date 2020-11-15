@@ -40,18 +40,18 @@ entero = 1
 #End Diego Rojas
 
 #Start Angie Flores
-mapa ={“clave” => 1, “clave2” =>2}
+
+mapa ={"clave" => 1, "clave2" =>2}
 
 Hash.has_value?1
 
-Hash.merge({“clave2” =>2 })
+Hash.merge({"clave2"=>2 })
 
 Hash.size
 
 I=1
+
 While(i<10)
     I+=1
 end
-
-
 #End Angie Flores
