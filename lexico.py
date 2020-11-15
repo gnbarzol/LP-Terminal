@@ -19,7 +19,11 @@ reserved = {
     'upcase': 'UPCASE',
     'min': 'MIN',
     'first': 'FIRST',
-    'map': 'MAP'
+    'map': 'MAP',
+    'has_value': 'HAS_VALUE',
+    'merge': 'MERGE',
+    'size': 'SIZE'
+
  }
 # List of token names. This is always required
 tokens = [
@@ -48,7 +52,9 @@ tokens = [
     'POINT',
     'QUESTION',
     'PIPE',
-    'OTHERSTRINGDECLARATION'
+    'OTHERSTRINGDECLARATION',
+    'OPENINGCB',
+    'CLOSURECB'
 ]+list(reserved.values())
 
  # A string containing ignored characters (spaces and tabs)
@@ -64,7 +70,7 @@ t_DIVIDE = r'/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_GREATER = r'>'
-t_GREATER_THAN_OR_EQUAL = r'>=',
+t_GREATER_THAN_OR_EQUAL = r'>='
 t_MINOR = r'<'
 t_MINOR_THAN_OR_EQUAL = r'<='
 t_ALFT = r'\['
@@ -79,6 +85,9 @@ t_POINT = r'\.'
 t_QUESTION = r'\?'
 t_PIPE = r'\|'
 t_ignore_COMMENT = r'\#.*'
+t_OPENINGCB = r'\{'
+t_CLOSURECB = r'\}'
+
 
 # A regular expression rule with some action code
 
@@ -90,7 +99,7 @@ def t_ID(t):
 def t_STRING(t):
     r'\".*?\"'
     t.value = t.value[1:-1] # remuevo las comillas
-    return t 
+    return t
 
 def t_FLOAT(t):
     r'\d+\.\d+'
