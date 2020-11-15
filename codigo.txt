@@ -1,9 +1,10 @@
 #Start Gary Barzola
-for i in lista do
+arr = ["1","2"]
+
+for i in arr do
   puts i
 end
 
-arr = ["1","2"]
 arr.min
 arr.first
 arr.map{|x| x*2}
@@ -37,20 +38,24 @@ string = %q(hola)
 
 entero = 1
 
+var.includes?"h"
+var.empty?
+var.upcase
+
 #End Diego Rojas
 
 #Start Angie Flores
-mapa ={“clave” => 1, “clave2” =>2}
+mapa ={"clave" => 1, "clave2" =>2}
 
-Hash.has_value?1
+mapa.has_value?1
 
-Hash.merge({“clave2” =>2 })
+mapa.merge({"clave2" =>2 })
 
-Hash.size
+mapa.size
 
-I=1
-While(i<10)
-    I+=1
+i=1
+while(i<10)
+    i+=1
 end
 
 
