@@ -54,7 +54,8 @@ tokens = [
     'PIPE',
     'OTHERSTRINGDECLARATION',
     'OPENINGCB',
-    'CLOSURECB'
+    'CLOSURECB',
+    'HASHROCKET'
 ]+list(reserved.values())
 
  # A string containing ignored characters (spaces and tabs)
@@ -87,6 +88,7 @@ t_PIPE = r'\|'
 t_ignore_COMMENT = r'\#.*'
 t_OPENINGCB = r'\{'
 t_CLOSURECB = r'\}'
+t_HASHROCKET = r'=>'
 
 
 # A regular expression rule with some action code
