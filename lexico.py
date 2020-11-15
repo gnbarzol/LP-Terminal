@@ -136,8 +136,9 @@ def analyze(data):
         print(tok)
 
 
-archivo = open("codigo.txt")
-# Tokenize
+archivo = open("codigo.txt","r")
+
+
 for line in archivo:
     print(">>>"+ line)
     analyze(line)
