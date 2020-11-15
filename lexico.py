@@ -13,7 +13,13 @@ reserved = {
     'false': 'FALSE',
     'true': 'TRUE',
     'puts': 'PUTS',
-    'gets': 'GETS'
+    'gets': 'GETS',
+    'include': 'INCLUDE',
+    'empty': 'EMPTY',
+    'upcase': 'UPCASE',
+    'min': 'MIN',
+    'first': 'FIRST',
+    'map': 'MAP'
  }
 # List of token names. This is always required
 tokens = [
@@ -37,7 +43,10 @@ tokens = [
     'LOGIC_NOT',
     'COMMA',
     'FLOAT',
-
+    'POINT',
+    'QUESTION',
+    'PIPE',
+    'OTHERSTRINGDECLARATION'
 ]+list(reserved.values())
 
 
@@ -64,6 +73,9 @@ t_LOGIC_OR = r'\|\|'
 t_LOGIC_NOT = r'!'
 t_COMMA = r'\,'
 t_ASIGN = r'='
+t_POINT = r'\.'
+t_QUESTION = r'\?'
+t_PIPE = r'\|'
 t_ignore_COMMENT = r'\#.*'
 
 # A regular expression rule with some action code
@@ -81,6 +93,11 @@ def t_STRING(t):
 def t_FLOAT(t):
     r'\d+\.\d+'
     t.value = float(t.value)
+    return t
+
+def t_OTHERSTRINGDECLARATION(t):
+    r'\%q\(.*?\)'
+    t.value = t.value[3:-1]
     return t
 
 # Define a rule so we can track line numbers

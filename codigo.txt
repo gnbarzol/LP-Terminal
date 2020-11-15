@@ -1,16 +1,29 @@
 #Start Gary Barzola
-
 for i in lista do
   puts i
 end
 
-puts "Hola mundo"
+arr = ["1","2"]
+arr.min
+arr.first
+arr.map{|x| x*2}
+
+string = %q(hola)
+
+a = (1+2) * (2-1)**2 
+b = a/2
 
 flotante = 3.4
 
 booleano = true
-
 booleano = false
+
+info = gets
+
+a = true && false
+b = true || false
+c = !true
+
 #End Gary Barzola
 
 #Start Diego Rojas
@@ -25,4 +38,3 @@ var = "mi primera cadena en ruby"
 entero = 1
 
 #End Diego Rojas
-
