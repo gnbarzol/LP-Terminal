@@ -8,8 +8,6 @@ arr.min
 arr.first
 arr.map{|x| x*2}
 
-string = %q(hola)
-
 a = (1+2) * (2-1)**2 
 b = a/2
 
@@ -34,6 +32,8 @@ else
 end
 
 var = "mi primera cadena en ruby"
+
+string = %q(hola)
 
 entero = 1
 

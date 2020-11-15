@@ -34,7 +34,9 @@ tokens = [
     'ID',
     'ASIGN',
     'GREATER',
+    'GREATER_THAN_OR_EQUAL',
     'MINOR',
+    'MINOR_THAN_OR_EQUAL',
     'ALFT',
     'ARGT',
     'EXPONENTIATION',
@@ -49,8 +51,6 @@ tokens = [
     'OTHERSTRINGDECLARATION'
 ]+list(reserved.values())
 
-
-
  # A string containing ignored characters (spaces and tabs)
 t_ignore = ' \t'
 
@@ -64,7 +64,9 @@ t_DIVIDE = r'/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_GREATER = r'>'
+t_GREATER_THAN_OR_EQUAL = r'>=',
 t_MINOR = r'<'
+t_MINOR_THAN_OR_EQUAL = r'<='
 t_ALFT = r'\['
 t_ARGT = r'\]'
 t_EXPONENTIATION = r'\*\*'
