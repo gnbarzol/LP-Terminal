@@ -1,4 +1,7 @@
 #Start Gary Barzola
+b = a/2
+a = (1+2) * (2-1)**2 
+
 arr = ["1","2"]
 
 for i in arr do
@@ -8,9 +11,6 @@ end
 arr.min
 arr.first
 arr.map{|x| x*2}
-
-a = (1+2) * (2-1)**2 
-b = a/2
 
 flotante = 3.4
 

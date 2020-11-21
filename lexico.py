@@ -37,6 +37,8 @@ tokens = [
     'RPAREN',
     'ID',
     'ASIGN',
+    'EQUAL',
+    'EQUAL_STRICT',
     'GREATER',
     'GREATER_THAN_OR_EQUAL',
     'MINOR',
@@ -62,37 +64,7 @@ tokens = [
 t_ignore = ' \t'
 
 
-# Regular expression rules for simple tokens
-t_NUMBER = r'\d+'
-t_PLUS = r'\+'
-t_MINUS = r'-'
-t_TIMES = r'\*'
-t_DIVIDE = r'/'
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_GREATER = r'>'
-t_GREATER_THAN_OR_EQUAL = r'>='
-t_MINOR = r'<'
-t_MINOR_THAN_OR_EQUAL = r'<='
-t_ALFT = r'\['
-t_ARGT = r'\]'
-t_EXPONENTIATION = r'\*\*'
-t_LOGIC_AND = r'&&'
-t_LOGIC_OR = r'\|\|'
-t_LOGIC_NOT = r'!'
-t_COMMA = r'\,'
-t_ASIGN = r'='
-t_POINT = r'\.'
-t_QUESTION = r'\?'
-t_PIPE = r'\|'
-t_ignore_COMMENT = r'\#.*'
-t_OPENINGCB = r'\{'
-t_CLOSURECB = r'\}'
-t_HASHROCKET = r'=>'
-
-
 # A regular expression rule with some action code
-
 def t_ID(t):
     r'[a-zA-Z_\$@][A-Za-z_0-9]*'
     t.type = reserved.get(t.value, 'ID')  # Check for reserved words
@@ -113,6 +85,11 @@ def t_OTHERSTRINGDECLARATION(t):
     t.value = t.value[3:-1]
     return t
 
+def t_NUMBER(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
+
 # Define a rule so we can track line numbers
 def t_newline(t):
  r'\n+'
@@ -123,6 +100,36 @@ def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
+
+
+# Regular expression rules for simple tokens
+t_PLUS = r'\+'
+t_MINUS = r'-'
+t_TIMES = r'\*'
+t_DIVIDE = r'/'
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
+t_GREATER = r'>'
+t_GREATER_THAN_OR_EQUAL = r'>='
+t_MINOR = r'<'
+t_MINOR_THAN_OR_EQUAL = r'<='
+t_ALFT = r'\['
+t_ARGT = r'\]'
+t_EXPONENTIATION = r'\*\*'
+t_LOGIC_AND = r'&&'
+t_LOGIC_OR = r'\|\|'
+t_LOGIC_NOT = r'!'
+t_COMMA = r'\,'
+t_ASIGN = r'='
+t_EQUAL = r'=='
+t_EQUAL_STRICT = r'==='
+t_POINT = r'\.'
+t_QUESTION = r'\?'
+t_PIPE = r'\|'
+t_ignore_COMMENT = r'\#.*'
+t_OPENINGCB = r'\{'
+t_CLOSURECB = r'\}'
+t_HASHROCKET = r'=>'
 
 # Build the lexer
 lexer = lex.lex()
