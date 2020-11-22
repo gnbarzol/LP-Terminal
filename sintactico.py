@@ -3,16 +3,18 @@ from lexico import tokens
 
 import ply.yacc as yacc
 
+
 def p_STATEMENT(p):
   ''' STATEMENT : EXPRESSION
                 | ASIGNATION
                 | STRUCTURE_FOR
                 | STRUCTURE_IF
   '''
-
+#GARY BARZOLA
 def p_ASIGNATION(p):
   'ASIGNATION : ID ASIGN EXPRESSION'
   p[0] = 'ASIGNATION'
+
 
 def p_EXPRESSION(p):
   ''' EXPRESSION : NUMBER
