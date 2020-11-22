@@ -27,6 +27,7 @@ def p_EXPRESSION(p):
                 | PUTS EXPRESSION
                 | PUTS ID
                 | GETS EXPRESSION
+                | FUNCTIONS_STRING
   '''
   p[0] = p[1]
 
@@ -82,9 +83,10 @@ def p_DATA_STRINGS(p):
 
 # Funciones que un String puede llamar
 def p_FUNCTIONS_STRING(p):
-  '''FUNCTIONS_STRING : DATASTRING POINT FUNCTIONS_ALLOWED_STRING
+  '''
+  FUNCTIONS_STRING : DATASTRING POINT FUNCTIONS_ALLOWED_STRING
 
-    FUNCTIONS_ALLOWED_STRING : INCLUDE QUESTION STRING
+  FUNCTIONS_ALLOWED_STRING : INCLUDE QUESTION DATASTRING
                             | EMPTY QUESTION
                             | UPCASE
   '''
