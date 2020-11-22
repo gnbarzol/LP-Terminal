@@ -3,7 +3,6 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 Unused terminals:
 
     AND
-    ELSE
     HASHROCKET
     HAS_VALUE
     MERGE
@@ -77,31 +76,32 @@ Rule 60    STRUCTURE_IF -> STRUCTURE_IN_IF DATA_REPEAT END
 Rule 61    STRUCTURE_IN_IF -> IF LPAREN BOOLEAN RPAREN
 Rule 62    DATA_REPEAT -> DATA_ALLOWED_IN_IF
 Rule 63    DATA_REPEAT -> DATA_ALLOWED_IN_IF DATA_REPEAT
-Rule 64    DATA_ALLOWED_IN_IF -> ASIGNATION
-Rule 65    DATA_ALLOWED_IN_IF -> EXPRESSION
-Rule 66    DATA -> NUMBER
-Rule 67    DATA -> FLOAT
-Rule 68    DATA -> BOOLEAN
-Rule 69    DATA -> STRING
-Rule 70    DATA -> DATA COMMA DATA
-Rule 71    BOOLEAN -> TRUE
-Rule 72    BOOLEAN -> FALSE
-Rule 73    BOOLEAN -> LOGIC_NOT TRUE
-Rule 74    BOOLEAN -> LOGIC_NOT FALSE
-Rule 75    OPERATOR_MAT -> PLUS
-Rule 76    OPERATOR_MAT -> MINUS
-Rule 77    OPERATOR_MAT -> TIMES
-Rule 78    OPERATOR_MAT -> DIVIDE
-Rule 79    OPERATOR_MAT -> EXPONENTIATION
-Rule 80    OPERATOR_COMP_MAT -> EQUAL
-Rule 81    OPERATOR_COMP_MAT -> EQUAL_STRICT
-Rule 82    OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL
-Rule 83    OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL
-Rule 84    OPERATOR_COMP_MAT -> MINOR
-Rule 85    OPERATOR_COMP_MAT -> GREATER
-Rule 86    OPERATOR_COMP_MAT -> LOGIC_AND
-Rule 87    OPERATOR_COMP_MAT -> LOGIC_OR
-Rule 88    OPERATOR_COMP_MAT -> PIPE
+Rule 64    DATA_REPEAT -> DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF
+Rule 65    DATA_ALLOWED_IN_IF -> ASIGNATION
+Rule 66    DATA_ALLOWED_IN_IF -> EXPRESSION
+Rule 67    DATA -> NUMBER
+Rule 68    DATA -> FLOAT
+Rule 69    DATA -> BOOLEAN
+Rule 70    DATA -> STRING
+Rule 71    DATA -> DATA COMMA DATA
+Rule 72    BOOLEAN -> TRUE
+Rule 73    BOOLEAN -> FALSE
+Rule 74    BOOLEAN -> LOGIC_NOT TRUE
+Rule 75    BOOLEAN -> LOGIC_NOT FALSE
+Rule 76    OPERATOR_MAT -> PLUS
+Rule 77    OPERATOR_MAT -> MINUS
+Rule 78    OPERATOR_MAT -> TIMES
+Rule 79    OPERATOR_MAT -> DIVIDE
+Rule 80    OPERATOR_MAT -> EXPONENTIATION
+Rule 81    OPERATOR_COMP_MAT -> EQUAL
+Rule 82    OPERATOR_COMP_MAT -> EQUAL_STRICT
+Rule 83    OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL
+Rule 84    OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL
+Rule 85    OPERATOR_COMP_MAT -> MINOR
+Rule 86    OPERATOR_COMP_MAT -> GREATER
+Rule 87    OPERATOR_COMP_MAT -> LOGIC_AND
+Rule 88    OPERATOR_COMP_MAT -> LOGIC_OR
+Rule 89    OPERATOR_COMP_MAT -> PIPE
 
 Terminals, with rules where they appear
 
@@ -110,52 +110,52 @@ AND                  :
 ARGT                 : 43
 ASIGN                : 5
 CLOSURECB            : 48
-COMMA                : 70
-DIVIDE               : 78
+COMMA                : 71
+DIVIDE               : 79
 DO                   : 54 55
-ELSE                 : 
+ELSE                 : 64
 EMPTY                : 41
 END                  : 53 60
-EQUAL                : 22 80
-EQUAL_STRICT         : 23 81
-EXPONENTIATION       : 79
-FALSE                : 72 74
+EQUAL                : 22 81
+EQUAL_STRICT         : 23 82
+EXPONENTIATION       : 80
+FALSE                : 73 75
 FIRST                : 46
-FLOAT                : 7 32 67
+FLOAT                : 7 32 68
 FOR                  : 54 55
 GETS                 : 18
-GREATER              : 85
-GREATER_THAN_OR_EQUAL : 82
+GREATER              : 86
+GREATER_THAN_OR_EQUAL : 83
 HASHROCKET           : 
 HAS_VALUE            : 
 ID                   : 5 17 33 48 54 55 55
 IF                   : 61
 IN                   : 54 55
 INCLUDE              : 40
-LOGIC_AND            : 24 86
-LOGIC_NOT            : 13 73 74
-LOGIC_OR             : 25 87
+LOGIC_AND            : 24 87
+LOGIC_NOT            : 13 74 75
+LOGIC_OR             : 25 88
 LPAREN               : 29 61
 MAP                  : 48
 MERGE                : 
 MIN                  : 45
-MINOR                : 84
-MINOR_THAN_OR_EQUAL  : 83
-MINUS                : 76
-NUMBER               : 6 31 66
+MINOR                : 85
+MINOR_THAN_OR_EQUAL  : 84
+MINUS                : 77
+NUMBER               : 6 31 67
 OPENINGCB            : 48
 OR                   : 
 OTHERSTRINGDECLARATION : 10 38
-PIPE                 : 26 48 48 88
-PLUS                 : 34 75
+PIPE                 : 26 48 48 89
+PLUS                 : 34 76
 POINT                : 39 44
 PUTS                 : 16 17
 QUESTION             : 40 41
 RPAREN               : 29 61
 SIZE                 : 
-STRING               : 9 37 69
-TIMES                : 77
-TRUE                 : 71 73
+STRING               : 9 37 70
+TIMES                : 78
+TRUE                 : 72 74
 UPCASE               : 42
 WHILE                : 
 error                : 
@@ -163,17 +163,17 @@ error                :
 Nonterminals, with rules where they appear
 
 ARRAY                : 11 36 44 54
-ASIGNATION           : 2 51 58 64
-BOOLEAN              : 8 20 20 61 68
-DATA                 : 43 70 70
+ASIGNATION           : 2 51 58 65
+BOOLEAN              : 8 20 20 61 69
+DATA                 : 43 71 71
 DATANF               : 27 27 30
 DATASTRING           : 21 21 35 39 40
 DATA_ALLOWED_IN_FOR  : 56 57
-DATA_ALLOWED_IN_IF   : 62 63
+DATA_ALLOWED_IN_IF   : 62 63 64 64
 DATA_ALLOWED_IN_MAP  : 
 DATA_REPEAT          : 53 57 60 63
 DATA_REPEAT_MAP      : 48 50
-EXPRESSION           : 1 5 13 16 18 52 59 65
+EXPRESSION           : 1 5 13 16 18 52 59 66
 EXPRESSION_CONCAT    : 15 34 34
 EXPRESSION_MAT       : 14 28 28 29
 FUNCTIONS_ALLOWED_STRING : 39
@@ -219,10 +219,10 @@ state 0
     (5) ASIGNATION -> . ID ASIGN EXPRESSION
     (53) STRUCTURE_FOR -> . STRUCTURE_IN_FOR DATA_REPEAT END
     (60) STRUCTURE_IF -> . STRUCTURE_IN_IF DATA_REPEAT END
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -385,6 +385,7 @@ state 6
   ! reduce/reduce conflict for ALFT resolved using rule 6 (EXPRESSION -> NUMBER .)
   ! reduce/reduce conflict for LPAREN resolved using rule 6 (EXPRESSION -> NUMBER .)
   ! reduce/reduce conflict for END resolved using rule 6 (EXPRESSION -> NUMBER .)
+  ! reduce/reduce conflict for ELSE resolved using rule 6 (EXPRESSION -> NUMBER .)
   ! reduce/reduce conflict for FOR resolved using rule 6 (EXPRESSION -> NUMBER .)
   ! reduce/reduce conflict for IF resolved using rule 6 (EXPRESSION -> NUMBER .)
   ! reduce/reduce conflict for CLOSURECB resolved using rule 6 (EXPRESSION -> NUMBER .)
@@ -402,6 +403,7 @@ state 6
     ALFT            reduce using rule 6 (EXPRESSION -> NUMBER .)
     LPAREN          reduce using rule 6 (EXPRESSION -> NUMBER .)
     END             reduce using rule 6 (EXPRESSION -> NUMBER .)
+    ELSE            reduce using rule 6 (EXPRESSION -> NUMBER .)
     FOR             reduce using rule 6 (EXPRESSION -> NUMBER .)
     IF              reduce using rule 6 (EXPRESSION -> NUMBER .)
     CLOSURECB       reduce using rule 6 (EXPRESSION -> NUMBER .)
@@ -434,6 +436,7 @@ state 6
   ! ALFT            [ reduce using rule 31 (DATANF -> NUMBER .) ]
   ! LPAREN          [ reduce using rule 31 (DATANF -> NUMBER .) ]
   ! END             [ reduce using rule 31 (DATANF -> NUMBER .) ]
+  ! ELSE            [ reduce using rule 31 (DATANF -> NUMBER .) ]
   ! FOR             [ reduce using rule 31 (DATANF -> NUMBER .) ]
   ! IF              [ reduce using rule 31 (DATANF -> NUMBER .) ]
   ! CLOSURECB       [ reduce using rule 31 (DATANF -> NUMBER .) ]
@@ -458,6 +461,7 @@ state 7
   ! reduce/reduce conflict for ALFT resolved using rule 7 (EXPRESSION -> FLOAT .)
   ! reduce/reduce conflict for LPAREN resolved using rule 7 (EXPRESSION -> FLOAT .)
   ! reduce/reduce conflict for END resolved using rule 7 (EXPRESSION -> FLOAT .)
+  ! reduce/reduce conflict for ELSE resolved using rule 7 (EXPRESSION -> FLOAT .)
   ! reduce/reduce conflict for FOR resolved using rule 7 (EXPRESSION -> FLOAT .)
   ! reduce/reduce conflict for IF resolved using rule 7 (EXPRESSION -> FLOAT .)
   ! reduce/reduce conflict for CLOSURECB resolved using rule 7 (EXPRESSION -> FLOAT .)
@@ -475,6 +479,7 @@ state 7
     ALFT            reduce using rule 7 (EXPRESSION -> FLOAT .)
     LPAREN          reduce using rule 7 (EXPRESSION -> FLOAT .)
     END             reduce using rule 7 (EXPRESSION -> FLOAT .)
+    ELSE            reduce using rule 7 (EXPRESSION -> FLOAT .)
     FOR             reduce using rule 7 (EXPRESSION -> FLOAT .)
     IF              reduce using rule 7 (EXPRESSION -> FLOAT .)
     CLOSURECB       reduce using rule 7 (EXPRESSION -> FLOAT .)
@@ -507,6 +512,7 @@ state 7
   ! ALFT            [ reduce using rule 32 (DATANF -> FLOAT .) ]
   ! LPAREN          [ reduce using rule 32 (DATANF -> FLOAT .) ]
   ! END             [ reduce using rule 32 (DATANF -> FLOAT .) ]
+  ! ELSE            [ reduce using rule 32 (DATANF -> FLOAT .) ]
   ! FOR             [ reduce using rule 32 (DATANF -> FLOAT .) ]
   ! IF              [ reduce using rule 32 (DATANF -> FLOAT .) ]
   ! CLOSURECB       [ reduce using rule 32 (DATANF -> FLOAT .) ]
@@ -536,6 +542,7 @@ state 8
     ALFT            reduce using rule 8 (EXPRESSION -> BOOLEAN .)
     LPAREN          reduce using rule 8 (EXPRESSION -> BOOLEAN .)
     END             reduce using rule 8 (EXPRESSION -> BOOLEAN .)
+    ELSE            reduce using rule 8 (EXPRESSION -> BOOLEAN .)
     FOR             reduce using rule 8 (EXPRESSION -> BOOLEAN .)
     IF              reduce using rule 8 (EXPRESSION -> BOOLEAN .)
     CLOSURECB       reduce using rule 8 (EXPRESSION -> BOOLEAN .)
@@ -566,6 +573,7 @@ state 9
   ! reduce/reduce conflict for ALFT resolved using rule 9 (EXPRESSION -> STRING .)
   ! reduce/reduce conflict for LPAREN resolved using rule 9 (EXPRESSION -> STRING .)
   ! reduce/reduce conflict for END resolved using rule 9 (EXPRESSION -> STRING .)
+  ! reduce/reduce conflict for ELSE resolved using rule 9 (EXPRESSION -> STRING .)
   ! reduce/reduce conflict for FOR resolved using rule 9 (EXPRESSION -> STRING .)
   ! reduce/reduce conflict for IF resolved using rule 9 (EXPRESSION -> STRING .)
   ! reduce/reduce conflict for CLOSURECB resolved using rule 9 (EXPRESSION -> STRING .)
@@ -583,6 +591,7 @@ state 9
     ALFT            reduce using rule 9 (EXPRESSION -> STRING .)
     LPAREN          reduce using rule 9 (EXPRESSION -> STRING .)
     END             reduce using rule 9 (EXPRESSION -> STRING .)
+    ELSE            reduce using rule 9 (EXPRESSION -> STRING .)
     FOR             reduce using rule 9 (EXPRESSION -> STRING .)
     IF              reduce using rule 9 (EXPRESSION -> STRING .)
     CLOSURECB       reduce using rule 9 (EXPRESSION -> STRING .)
@@ -608,6 +617,7 @@ state 9
   ! ALFT            [ reduce using rule 37 (DATASTRING -> STRING .) ]
   ! LPAREN          [ reduce using rule 37 (DATASTRING -> STRING .) ]
   ! END             [ reduce using rule 37 (DATASTRING -> STRING .) ]
+  ! ELSE            [ reduce using rule 37 (DATASTRING -> STRING .) ]
   ! FOR             [ reduce using rule 37 (DATASTRING -> STRING .) ]
   ! IF              [ reduce using rule 37 (DATASTRING -> STRING .) ]
   ! CLOSURECB       [ reduce using rule 37 (DATASTRING -> STRING .) ]
@@ -632,6 +642,7 @@ state 10
   ! reduce/reduce conflict for ALFT resolved using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
   ! reduce/reduce conflict for LPAREN resolved using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
   ! reduce/reduce conflict for END resolved using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
+  ! reduce/reduce conflict for ELSE resolved using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
   ! reduce/reduce conflict for FOR resolved using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
   ! reduce/reduce conflict for IF resolved using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
   ! reduce/reduce conflict for CLOSURECB resolved using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
@@ -649,6 +660,7 @@ state 10
     ALFT            reduce using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
     LPAREN          reduce using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
     END             reduce using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
+    ELSE            reduce using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
     FOR             reduce using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
     IF              reduce using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
     CLOSURECB       reduce using rule 10 (EXPRESSION -> OTHERSTRINGDECLARATION .)
@@ -674,6 +686,7 @@ state 10
   ! ALFT            [ reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .) ]
   ! LPAREN          [ reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .) ]
   ! END             [ reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .) ]
+  ! ELSE            [ reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .) ]
   ! FOR             [ reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .) ]
   ! IF              [ reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .) ]
   ! CLOSURECB       [ reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .) ]
@@ -699,6 +712,7 @@ state 11
   ! reduce/reduce conflict for ALFT resolved using rule 11 (EXPRESSION -> ARRAY .)
   ! reduce/reduce conflict for LPAREN resolved using rule 11 (EXPRESSION -> ARRAY .)
   ! reduce/reduce conflict for END resolved using rule 11 (EXPRESSION -> ARRAY .)
+  ! reduce/reduce conflict for ELSE resolved using rule 11 (EXPRESSION -> ARRAY .)
   ! reduce/reduce conflict for FOR resolved using rule 11 (EXPRESSION -> ARRAY .)
   ! reduce/reduce conflict for IF resolved using rule 11 (EXPRESSION -> ARRAY .)
   ! reduce/reduce conflict for CLOSURECB resolved using rule 11 (EXPRESSION -> ARRAY .)
@@ -716,6 +730,7 @@ state 11
     ALFT            reduce using rule 11 (EXPRESSION -> ARRAY .)
     LPAREN          reduce using rule 11 (EXPRESSION -> ARRAY .)
     END             reduce using rule 11 (EXPRESSION -> ARRAY .)
+    ELSE            reduce using rule 11 (EXPRESSION -> ARRAY .)
     FOR             reduce using rule 11 (EXPRESSION -> ARRAY .)
     IF              reduce using rule 11 (EXPRESSION -> ARRAY .)
     CLOSURECB       reduce using rule 11 (EXPRESSION -> ARRAY .)
@@ -736,6 +751,7 @@ state 11
   ! ALFT            [ reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .) ]
   ! LPAREN          [ reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .) ]
   ! END             [ reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .) ]
+  ! ELSE            [ reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .) ]
   ! FOR             [ reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .) ]
   ! IF              [ reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .) ]
   ! CLOSURECB       [ reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .) ]
@@ -759,6 +775,7 @@ state 12
     ALFT            reduce using rule 12 (EXPRESSION -> FUNTIONS_ARRAY .)
     LPAREN          reduce using rule 12 (EXPRESSION -> FUNTIONS_ARRAY .)
     END             reduce using rule 12 (EXPRESSION -> FUNTIONS_ARRAY .)
+    ELSE            reduce using rule 12 (EXPRESSION -> FUNTIONS_ARRAY .)
     FOR             reduce using rule 12 (EXPRESSION -> FUNTIONS_ARRAY .)
     IF              reduce using rule 12 (EXPRESSION -> FUNTIONS_ARRAY .)
     CLOSURECB       reduce using rule 12 (EXPRESSION -> FUNTIONS_ARRAY .)
@@ -767,8 +784,8 @@ state 12
 state 13
 
     (13) EXPRESSION -> LOGIC_NOT . EXPRESSION
-    (73) BOOLEAN -> LOGIC_NOT . TRUE
-    (74) BOOLEAN -> LOGIC_NOT . FALSE
+    (74) BOOLEAN -> LOGIC_NOT . TRUE
+    (75) BOOLEAN -> LOGIC_NOT . FALSE
     (6) EXPRESSION -> . NUMBER
     (7) EXPRESSION -> . FLOAT
     (8) EXPRESSION -> . BOOLEAN
@@ -786,10 +803,10 @@ state 13
     (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
     (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
     (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -832,11 +849,11 @@ state 14
 
     (14) EXPRESSION -> EXPRESSION_MAT .
     (28) EXPRESSION_MAT -> EXPRESSION_MAT . OPERATOR_MAT EXPRESSION_MAT
-    (75) OPERATOR_MAT -> . PLUS
-    (76) OPERATOR_MAT -> . MINUS
-    (77) OPERATOR_MAT -> . TIMES
-    (78) OPERATOR_MAT -> . DIVIDE
-    (79) OPERATOR_MAT -> . EXPONENTIATION
+    (76) OPERATOR_MAT -> . PLUS
+    (77) OPERATOR_MAT -> . MINUS
+    (78) OPERATOR_MAT -> . TIMES
+    (79) OPERATOR_MAT -> . DIVIDE
+    (80) OPERATOR_MAT -> . EXPONENTIATION
 
     $end            reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
     ID              reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
@@ -852,6 +869,7 @@ state 14
     ALFT            reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
     LPAREN          reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
     END             reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
+    ELSE            reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
     FOR             reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
     IF              reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
     CLOSURECB       reduce using rule 14 (EXPRESSION -> EXPRESSION_MAT .)
@@ -882,6 +900,7 @@ state 15
     ALFT            reduce using rule 15 (EXPRESSION -> EXPRESSION_CONCAT .)
     LPAREN          reduce using rule 15 (EXPRESSION -> EXPRESSION_CONCAT .)
     END             reduce using rule 15 (EXPRESSION -> EXPRESSION_CONCAT .)
+    ELSE            reduce using rule 15 (EXPRESSION -> EXPRESSION_CONCAT .)
     FOR             reduce using rule 15 (EXPRESSION -> EXPRESSION_CONCAT .)
     IF              reduce using rule 15 (EXPRESSION -> EXPRESSION_CONCAT .)
     CLOSURECB       reduce using rule 15 (EXPRESSION -> EXPRESSION_CONCAT .)
@@ -909,10 +928,10 @@ state 16
     (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
     (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
     (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -985,6 +1004,7 @@ state 17
     ALFT            reduce using rule 33 (DATANF -> ID .)
     LPAREN          reduce using rule 33 (DATANF -> ID .)
     END             reduce using rule 33 (DATANF -> ID .)
+    ELSE            reduce using rule 33 (DATANF -> ID .)
     FOR             reduce using rule 33 (DATANF -> ID .)
     IF              reduce using rule 33 (DATANF -> ID .)
     CLOSURECB       reduce using rule 33 (DATANF -> ID .)
@@ -1010,10 +1030,10 @@ state 18
     (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
     (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
     (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -1070,6 +1090,7 @@ state 19
     ALFT            reduce using rule 19 (EXPRESSION -> FUNCTIONS_STRING .)
     LPAREN          reduce using rule 19 (EXPRESSION -> FUNCTIONS_STRING .)
     END             reduce using rule 19 (EXPRESSION -> FUNCTIONS_STRING .)
+    ELSE            reduce using rule 19 (EXPRESSION -> FUNCTIONS_STRING .)
     FOR             reduce using rule 19 (EXPRESSION -> FUNCTIONS_STRING .)
     IF              reduce using rule 19 (EXPRESSION -> FUNCTIONS_STRING .)
     CLOSURECB       reduce using rule 19 (EXPRESSION -> FUNCTIONS_STRING .)
@@ -1101,6 +1122,7 @@ state 20
     ALFT            reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     LPAREN          reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     END             reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
+    ELSE            reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     FOR             reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     IF              reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     CLOSURECB       reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
@@ -1117,15 +1139,15 @@ state 21
 
     (27) EXPRESSION -> DATANF . OPERATOR_COMP_MAT DATANF
     (30) EXPRESSION_MAT -> DATANF .
-    (80) OPERATOR_COMP_MAT -> . EQUAL
-    (81) OPERATOR_COMP_MAT -> . EQUAL_STRICT
-    (82) OPERATOR_COMP_MAT -> . GREATER_THAN_OR_EQUAL
-    (83) OPERATOR_COMP_MAT -> . MINOR_THAN_OR_EQUAL
-    (84) OPERATOR_COMP_MAT -> . MINOR
-    (85) OPERATOR_COMP_MAT -> . GREATER
-    (86) OPERATOR_COMP_MAT -> . LOGIC_AND
-    (87) OPERATOR_COMP_MAT -> . LOGIC_OR
-    (88) OPERATOR_COMP_MAT -> . PIPE
+    (81) OPERATOR_COMP_MAT -> . EQUAL
+    (82) OPERATOR_COMP_MAT -> . EQUAL_STRICT
+    (83) OPERATOR_COMP_MAT -> . GREATER_THAN_OR_EQUAL
+    (84) OPERATOR_COMP_MAT -> . MINOR_THAN_OR_EQUAL
+    (85) OPERATOR_COMP_MAT -> . MINOR
+    (86) OPERATOR_COMP_MAT -> . GREATER
+    (87) OPERATOR_COMP_MAT -> . LOGIC_AND
+    (88) OPERATOR_COMP_MAT -> . LOGIC_OR
+    (89) OPERATOR_COMP_MAT -> . PIPE
 
     PLUS            reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     MINUS           reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
@@ -1146,6 +1168,7 @@ state 21
     ALFT            reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     LPAREN          reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     END             reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
+    ELSE            reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     FOR             reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     IF              reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     CLOSURECB       reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
@@ -1168,10 +1191,11 @@ state 22
     (57) DATA_REPEAT -> . DATA_ALLOWED_IN_FOR DATA_REPEAT
     (62) DATA_REPEAT -> . DATA_ALLOWED_IN_IF
     (63) DATA_REPEAT -> . DATA_ALLOWED_IN_IF DATA_REPEAT
+    (64) DATA_REPEAT -> . DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF
     (58) DATA_ALLOWED_IN_FOR -> . ASIGNATION
     (59) DATA_ALLOWED_IN_FOR -> . EXPRESSION
-    (64) DATA_ALLOWED_IN_IF -> . ASIGNATION
-    (65) DATA_ALLOWED_IN_IF -> . EXPRESSION
+    (65) DATA_ALLOWED_IN_IF -> . ASIGNATION
+    (66) DATA_ALLOWED_IN_IF -> . EXPRESSION
     (5) ASIGNATION -> . ID ASIGN EXPRESSION
     (6) EXPRESSION -> . NUMBER
     (7) EXPRESSION -> . FLOAT
@@ -1190,10 +1214,10 @@ state 22
     (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
     (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
     (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -1243,10 +1267,11 @@ state 23
     (57) DATA_REPEAT -> . DATA_ALLOWED_IN_FOR DATA_REPEAT
     (62) DATA_REPEAT -> . DATA_ALLOWED_IN_IF
     (63) DATA_REPEAT -> . DATA_ALLOWED_IN_IF DATA_REPEAT
+    (64) DATA_REPEAT -> . DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF
     (58) DATA_ALLOWED_IN_FOR -> . ASIGNATION
     (59) DATA_ALLOWED_IN_FOR -> . EXPRESSION
-    (64) DATA_ALLOWED_IN_IF -> . ASIGNATION
-    (65) DATA_ALLOWED_IN_IF -> . EXPRESSION
+    (65) DATA_ALLOWED_IN_IF -> . ASIGNATION
+    (66) DATA_ALLOWED_IN_IF -> . EXPRESSION
     (5) ASIGNATION -> . ID ASIGN EXPRESSION
     (6) EXPRESSION -> . NUMBER
     (7) EXPRESSION -> . FLOAT
@@ -1265,10 +1290,10 @@ state 23
     (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
     (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
     (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -1313,78 +1338,80 @@ state 23
 
 state 24
 
-    (71) BOOLEAN -> TRUE .
+    (72) BOOLEAN -> TRUE .
 
-    EQUAL           reduce using rule 71 (BOOLEAN -> TRUE .)
-    EQUAL_STRICT    reduce using rule 71 (BOOLEAN -> TRUE .)
-    LOGIC_AND       reduce using rule 71 (BOOLEAN -> TRUE .)
-    LOGIC_OR        reduce using rule 71 (BOOLEAN -> TRUE .)
-    PIPE            reduce using rule 71 (BOOLEAN -> TRUE .)
-    $end            reduce using rule 71 (BOOLEAN -> TRUE .)
-    ID              reduce using rule 71 (BOOLEAN -> TRUE .)
-    NUMBER          reduce using rule 71 (BOOLEAN -> TRUE .)
-    FLOAT           reduce using rule 71 (BOOLEAN -> TRUE .)
-    STRING          reduce using rule 71 (BOOLEAN -> TRUE .)
-    OTHERSTRINGDECLARATION reduce using rule 71 (BOOLEAN -> TRUE .)
-    LOGIC_NOT       reduce using rule 71 (BOOLEAN -> TRUE .)
-    PUTS            reduce using rule 71 (BOOLEAN -> TRUE .)
-    GETS            reduce using rule 71 (BOOLEAN -> TRUE .)
-    TRUE            reduce using rule 71 (BOOLEAN -> TRUE .)
-    FALSE           reduce using rule 71 (BOOLEAN -> TRUE .)
-    ALFT            reduce using rule 71 (BOOLEAN -> TRUE .)
-    LPAREN          reduce using rule 71 (BOOLEAN -> TRUE .)
-    END             reduce using rule 71 (BOOLEAN -> TRUE .)
-    FOR             reduce using rule 71 (BOOLEAN -> TRUE .)
-    IF              reduce using rule 71 (BOOLEAN -> TRUE .)
-    CLOSURECB       reduce using rule 71 (BOOLEAN -> TRUE .)
-    ARGT            reduce using rule 71 (BOOLEAN -> TRUE .)
-    COMMA           reduce using rule 71 (BOOLEAN -> TRUE .)
-    RPAREN          reduce using rule 71 (BOOLEAN -> TRUE .)
+    EQUAL           reduce using rule 72 (BOOLEAN -> TRUE .)
+    EQUAL_STRICT    reduce using rule 72 (BOOLEAN -> TRUE .)
+    LOGIC_AND       reduce using rule 72 (BOOLEAN -> TRUE .)
+    LOGIC_OR        reduce using rule 72 (BOOLEAN -> TRUE .)
+    PIPE            reduce using rule 72 (BOOLEAN -> TRUE .)
+    $end            reduce using rule 72 (BOOLEAN -> TRUE .)
+    ID              reduce using rule 72 (BOOLEAN -> TRUE .)
+    NUMBER          reduce using rule 72 (BOOLEAN -> TRUE .)
+    FLOAT           reduce using rule 72 (BOOLEAN -> TRUE .)
+    STRING          reduce using rule 72 (BOOLEAN -> TRUE .)
+    OTHERSTRINGDECLARATION reduce using rule 72 (BOOLEAN -> TRUE .)
+    LOGIC_NOT       reduce using rule 72 (BOOLEAN -> TRUE .)
+    PUTS            reduce using rule 72 (BOOLEAN -> TRUE .)
+    GETS            reduce using rule 72 (BOOLEAN -> TRUE .)
+    TRUE            reduce using rule 72 (BOOLEAN -> TRUE .)
+    FALSE           reduce using rule 72 (BOOLEAN -> TRUE .)
+    ALFT            reduce using rule 72 (BOOLEAN -> TRUE .)
+    LPAREN          reduce using rule 72 (BOOLEAN -> TRUE .)
+    END             reduce using rule 72 (BOOLEAN -> TRUE .)
+    ELSE            reduce using rule 72 (BOOLEAN -> TRUE .)
+    FOR             reduce using rule 72 (BOOLEAN -> TRUE .)
+    IF              reduce using rule 72 (BOOLEAN -> TRUE .)
+    CLOSURECB       reduce using rule 72 (BOOLEAN -> TRUE .)
+    ARGT            reduce using rule 72 (BOOLEAN -> TRUE .)
+    COMMA           reduce using rule 72 (BOOLEAN -> TRUE .)
+    RPAREN          reduce using rule 72 (BOOLEAN -> TRUE .)
 
 
 state 25
 
-    (72) BOOLEAN -> FALSE .
+    (73) BOOLEAN -> FALSE .
 
-    EQUAL           reduce using rule 72 (BOOLEAN -> FALSE .)
-    EQUAL_STRICT    reduce using rule 72 (BOOLEAN -> FALSE .)
-    LOGIC_AND       reduce using rule 72 (BOOLEAN -> FALSE .)
-    LOGIC_OR        reduce using rule 72 (BOOLEAN -> FALSE .)
-    PIPE            reduce using rule 72 (BOOLEAN -> FALSE .)
-    $end            reduce using rule 72 (BOOLEAN -> FALSE .)
-    ID              reduce using rule 72 (BOOLEAN -> FALSE .)
-    NUMBER          reduce using rule 72 (BOOLEAN -> FALSE .)
-    FLOAT           reduce using rule 72 (BOOLEAN -> FALSE .)
-    STRING          reduce using rule 72 (BOOLEAN -> FALSE .)
-    OTHERSTRINGDECLARATION reduce using rule 72 (BOOLEAN -> FALSE .)
-    LOGIC_NOT       reduce using rule 72 (BOOLEAN -> FALSE .)
-    PUTS            reduce using rule 72 (BOOLEAN -> FALSE .)
-    GETS            reduce using rule 72 (BOOLEAN -> FALSE .)
-    TRUE            reduce using rule 72 (BOOLEAN -> FALSE .)
-    FALSE           reduce using rule 72 (BOOLEAN -> FALSE .)
-    ALFT            reduce using rule 72 (BOOLEAN -> FALSE .)
-    LPAREN          reduce using rule 72 (BOOLEAN -> FALSE .)
-    END             reduce using rule 72 (BOOLEAN -> FALSE .)
-    FOR             reduce using rule 72 (BOOLEAN -> FALSE .)
-    IF              reduce using rule 72 (BOOLEAN -> FALSE .)
-    CLOSURECB       reduce using rule 72 (BOOLEAN -> FALSE .)
-    ARGT            reduce using rule 72 (BOOLEAN -> FALSE .)
-    COMMA           reduce using rule 72 (BOOLEAN -> FALSE .)
-    RPAREN          reduce using rule 72 (BOOLEAN -> FALSE .)
+    EQUAL           reduce using rule 73 (BOOLEAN -> FALSE .)
+    EQUAL_STRICT    reduce using rule 73 (BOOLEAN -> FALSE .)
+    LOGIC_AND       reduce using rule 73 (BOOLEAN -> FALSE .)
+    LOGIC_OR        reduce using rule 73 (BOOLEAN -> FALSE .)
+    PIPE            reduce using rule 73 (BOOLEAN -> FALSE .)
+    $end            reduce using rule 73 (BOOLEAN -> FALSE .)
+    ID              reduce using rule 73 (BOOLEAN -> FALSE .)
+    NUMBER          reduce using rule 73 (BOOLEAN -> FALSE .)
+    FLOAT           reduce using rule 73 (BOOLEAN -> FALSE .)
+    STRING          reduce using rule 73 (BOOLEAN -> FALSE .)
+    OTHERSTRINGDECLARATION reduce using rule 73 (BOOLEAN -> FALSE .)
+    LOGIC_NOT       reduce using rule 73 (BOOLEAN -> FALSE .)
+    PUTS            reduce using rule 73 (BOOLEAN -> FALSE .)
+    GETS            reduce using rule 73 (BOOLEAN -> FALSE .)
+    TRUE            reduce using rule 73 (BOOLEAN -> FALSE .)
+    FALSE           reduce using rule 73 (BOOLEAN -> FALSE .)
+    ALFT            reduce using rule 73 (BOOLEAN -> FALSE .)
+    LPAREN          reduce using rule 73 (BOOLEAN -> FALSE .)
+    END             reduce using rule 73 (BOOLEAN -> FALSE .)
+    ELSE            reduce using rule 73 (BOOLEAN -> FALSE .)
+    FOR             reduce using rule 73 (BOOLEAN -> FALSE .)
+    IF              reduce using rule 73 (BOOLEAN -> FALSE .)
+    CLOSURECB       reduce using rule 73 (BOOLEAN -> FALSE .)
+    ARGT            reduce using rule 73 (BOOLEAN -> FALSE .)
+    COMMA           reduce using rule 73 (BOOLEAN -> FALSE .)
+    RPAREN          reduce using rule 73 (BOOLEAN -> FALSE .)
 
 
 state 26
 
     (43) ARRAY -> ALFT . DATA ARGT
-    (66) DATA -> . NUMBER
-    (67) DATA -> . FLOAT
-    (68) DATA -> . BOOLEAN
-    (69) DATA -> . STRING
-    (70) DATA -> . DATA COMMA DATA
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (67) DATA -> . NUMBER
+    (68) DATA -> . FLOAT
+    (69) DATA -> . BOOLEAN
+    (70) DATA -> . STRING
+    (71) DATA -> . DATA COMMA DATA
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
 
     NUMBER          shift and go to state 71
     FLOAT           shift and go to state 72
@@ -1432,10 +1459,10 @@ state 29
 state 30
 
     (20) EXPRESSION -> BOOLEAN OPERATOR_COMP_BOOLEAN . BOOLEAN
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
 
     TRUE            shift and go to state 24
     FALSE           shift and go to state 25
@@ -1531,6 +1558,7 @@ state 37
     ALFT            reduce using rule 13 (EXPRESSION -> LOGIC_NOT EXPRESSION .)
     LPAREN          reduce using rule 13 (EXPRESSION -> LOGIC_NOT EXPRESSION .)
     END             reduce using rule 13 (EXPRESSION -> LOGIC_NOT EXPRESSION .)
+    ELSE            reduce using rule 13 (EXPRESSION -> LOGIC_NOT EXPRESSION .)
     FOR             reduce using rule 13 (EXPRESSION -> LOGIC_NOT EXPRESSION .)
     IF              reduce using rule 13 (EXPRESSION -> LOGIC_NOT EXPRESSION .)
     CLOSURECB       reduce using rule 13 (EXPRESSION -> LOGIC_NOT EXPRESSION .)
@@ -1538,150 +1566,156 @@ state 37
 
 state 38
 
-    (73) BOOLEAN -> LOGIC_NOT TRUE .
-    (71) BOOLEAN -> TRUE .
+    (74) BOOLEAN -> LOGIC_NOT TRUE .
+    (72) BOOLEAN -> TRUE .
 
-  ! reduce/reduce conflict for EQUAL resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for EQUAL_STRICT resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for LOGIC_AND resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for LOGIC_OR resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for PIPE resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for $end resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for ID resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for NUMBER resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for FLOAT resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for STRING resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for OTHERSTRINGDECLARATION resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for LOGIC_NOT resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for PUTS resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for GETS resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for TRUE resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for FALSE resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for ALFT resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for LPAREN resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for END resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for FOR resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for IF resolved using rule 71 (BOOLEAN -> TRUE .)
-  ! reduce/reduce conflict for CLOSURECB resolved using rule 71 (BOOLEAN -> TRUE .)
-    EQUAL           reduce using rule 71 (BOOLEAN -> TRUE .)
-    EQUAL_STRICT    reduce using rule 71 (BOOLEAN -> TRUE .)
-    LOGIC_AND       reduce using rule 71 (BOOLEAN -> TRUE .)
-    LOGIC_OR        reduce using rule 71 (BOOLEAN -> TRUE .)
-    PIPE            reduce using rule 71 (BOOLEAN -> TRUE .)
-    $end            reduce using rule 71 (BOOLEAN -> TRUE .)
-    ID              reduce using rule 71 (BOOLEAN -> TRUE .)
-    NUMBER          reduce using rule 71 (BOOLEAN -> TRUE .)
-    FLOAT           reduce using rule 71 (BOOLEAN -> TRUE .)
-    STRING          reduce using rule 71 (BOOLEAN -> TRUE .)
-    OTHERSTRINGDECLARATION reduce using rule 71 (BOOLEAN -> TRUE .)
-    LOGIC_NOT       reduce using rule 71 (BOOLEAN -> TRUE .)
-    PUTS            reduce using rule 71 (BOOLEAN -> TRUE .)
-    GETS            reduce using rule 71 (BOOLEAN -> TRUE .)
-    TRUE            reduce using rule 71 (BOOLEAN -> TRUE .)
-    FALSE           reduce using rule 71 (BOOLEAN -> TRUE .)
-    ALFT            reduce using rule 71 (BOOLEAN -> TRUE .)
-    LPAREN          reduce using rule 71 (BOOLEAN -> TRUE .)
-    END             reduce using rule 71 (BOOLEAN -> TRUE .)
-    FOR             reduce using rule 71 (BOOLEAN -> TRUE .)
-    IF              reduce using rule 71 (BOOLEAN -> TRUE .)
-    CLOSURECB       reduce using rule 71 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for EQUAL resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for EQUAL_STRICT resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for LOGIC_AND resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for LOGIC_OR resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for PIPE resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for $end resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for ID resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for NUMBER resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for FLOAT resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for STRING resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for OTHERSTRINGDECLARATION resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for LOGIC_NOT resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for PUTS resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for GETS resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for TRUE resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for FALSE resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for ALFT resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for LPAREN resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for END resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for ELSE resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for FOR resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for IF resolved using rule 72 (BOOLEAN -> TRUE .)
+  ! reduce/reduce conflict for CLOSURECB resolved using rule 72 (BOOLEAN -> TRUE .)
+    EQUAL           reduce using rule 72 (BOOLEAN -> TRUE .)
+    EQUAL_STRICT    reduce using rule 72 (BOOLEAN -> TRUE .)
+    LOGIC_AND       reduce using rule 72 (BOOLEAN -> TRUE .)
+    LOGIC_OR        reduce using rule 72 (BOOLEAN -> TRUE .)
+    PIPE            reduce using rule 72 (BOOLEAN -> TRUE .)
+    $end            reduce using rule 72 (BOOLEAN -> TRUE .)
+    ID              reduce using rule 72 (BOOLEAN -> TRUE .)
+    NUMBER          reduce using rule 72 (BOOLEAN -> TRUE .)
+    FLOAT           reduce using rule 72 (BOOLEAN -> TRUE .)
+    STRING          reduce using rule 72 (BOOLEAN -> TRUE .)
+    OTHERSTRINGDECLARATION reduce using rule 72 (BOOLEAN -> TRUE .)
+    LOGIC_NOT       reduce using rule 72 (BOOLEAN -> TRUE .)
+    PUTS            reduce using rule 72 (BOOLEAN -> TRUE .)
+    GETS            reduce using rule 72 (BOOLEAN -> TRUE .)
+    TRUE            reduce using rule 72 (BOOLEAN -> TRUE .)
+    FALSE           reduce using rule 72 (BOOLEAN -> TRUE .)
+    ALFT            reduce using rule 72 (BOOLEAN -> TRUE .)
+    LPAREN          reduce using rule 72 (BOOLEAN -> TRUE .)
+    END             reduce using rule 72 (BOOLEAN -> TRUE .)
+    ELSE            reduce using rule 72 (BOOLEAN -> TRUE .)
+    FOR             reduce using rule 72 (BOOLEAN -> TRUE .)
+    IF              reduce using rule 72 (BOOLEAN -> TRUE .)
+    CLOSURECB       reduce using rule 72 (BOOLEAN -> TRUE .)
 
-  ! EQUAL           [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! EQUAL_STRICT    [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! LOGIC_AND       [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! LOGIC_OR        [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! PIPE            [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! $end            [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! ID              [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! NUMBER          [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! FLOAT           [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! STRING          [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! OTHERSTRINGDECLARATION [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! LOGIC_NOT       [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! PUTS            [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! GETS            [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! TRUE            [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! FALSE           [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! ALFT            [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! LPAREN          [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! END             [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! FOR             [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! IF              [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
-  ! CLOSURECB       [ reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! EQUAL           [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! EQUAL_STRICT    [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! LOGIC_AND       [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! LOGIC_OR        [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! PIPE            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! $end            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! ID              [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! NUMBER          [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! FLOAT           [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! STRING          [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! OTHERSTRINGDECLARATION [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! LOGIC_NOT       [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! PUTS            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! GETS            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! TRUE            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! FALSE           [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! ALFT            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! LPAREN          [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! END             [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! ELSE            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! FOR             [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! IF              [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
+  ! CLOSURECB       [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .) ]
 
 
 state 39
 
-    (74) BOOLEAN -> LOGIC_NOT FALSE .
-    (72) BOOLEAN -> FALSE .
+    (75) BOOLEAN -> LOGIC_NOT FALSE .
+    (73) BOOLEAN -> FALSE .
 
-  ! reduce/reduce conflict for EQUAL resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for EQUAL_STRICT resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for LOGIC_AND resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for LOGIC_OR resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for PIPE resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for $end resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for ID resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for NUMBER resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for FLOAT resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for STRING resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for OTHERSTRINGDECLARATION resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for LOGIC_NOT resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for PUTS resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for GETS resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for TRUE resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for FALSE resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for ALFT resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for LPAREN resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for END resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for FOR resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for IF resolved using rule 72 (BOOLEAN -> FALSE .)
-  ! reduce/reduce conflict for CLOSURECB resolved using rule 72 (BOOLEAN -> FALSE .)
-    EQUAL           reduce using rule 72 (BOOLEAN -> FALSE .)
-    EQUAL_STRICT    reduce using rule 72 (BOOLEAN -> FALSE .)
-    LOGIC_AND       reduce using rule 72 (BOOLEAN -> FALSE .)
-    LOGIC_OR        reduce using rule 72 (BOOLEAN -> FALSE .)
-    PIPE            reduce using rule 72 (BOOLEAN -> FALSE .)
-    $end            reduce using rule 72 (BOOLEAN -> FALSE .)
-    ID              reduce using rule 72 (BOOLEAN -> FALSE .)
-    NUMBER          reduce using rule 72 (BOOLEAN -> FALSE .)
-    FLOAT           reduce using rule 72 (BOOLEAN -> FALSE .)
-    STRING          reduce using rule 72 (BOOLEAN -> FALSE .)
-    OTHERSTRINGDECLARATION reduce using rule 72 (BOOLEAN -> FALSE .)
-    LOGIC_NOT       reduce using rule 72 (BOOLEAN -> FALSE .)
-    PUTS            reduce using rule 72 (BOOLEAN -> FALSE .)
-    GETS            reduce using rule 72 (BOOLEAN -> FALSE .)
-    TRUE            reduce using rule 72 (BOOLEAN -> FALSE .)
-    FALSE           reduce using rule 72 (BOOLEAN -> FALSE .)
-    ALFT            reduce using rule 72 (BOOLEAN -> FALSE .)
-    LPAREN          reduce using rule 72 (BOOLEAN -> FALSE .)
-    END             reduce using rule 72 (BOOLEAN -> FALSE .)
-    FOR             reduce using rule 72 (BOOLEAN -> FALSE .)
-    IF              reduce using rule 72 (BOOLEAN -> FALSE .)
-    CLOSURECB       reduce using rule 72 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for EQUAL resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for EQUAL_STRICT resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for LOGIC_AND resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for LOGIC_OR resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for PIPE resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for $end resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for ID resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for NUMBER resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for FLOAT resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for STRING resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for OTHERSTRINGDECLARATION resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for LOGIC_NOT resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for PUTS resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for GETS resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for TRUE resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for FALSE resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for ALFT resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for LPAREN resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for END resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for ELSE resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for FOR resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for IF resolved using rule 73 (BOOLEAN -> FALSE .)
+  ! reduce/reduce conflict for CLOSURECB resolved using rule 73 (BOOLEAN -> FALSE .)
+    EQUAL           reduce using rule 73 (BOOLEAN -> FALSE .)
+    EQUAL_STRICT    reduce using rule 73 (BOOLEAN -> FALSE .)
+    LOGIC_AND       reduce using rule 73 (BOOLEAN -> FALSE .)
+    LOGIC_OR        reduce using rule 73 (BOOLEAN -> FALSE .)
+    PIPE            reduce using rule 73 (BOOLEAN -> FALSE .)
+    $end            reduce using rule 73 (BOOLEAN -> FALSE .)
+    ID              reduce using rule 73 (BOOLEAN -> FALSE .)
+    NUMBER          reduce using rule 73 (BOOLEAN -> FALSE .)
+    FLOAT           reduce using rule 73 (BOOLEAN -> FALSE .)
+    STRING          reduce using rule 73 (BOOLEAN -> FALSE .)
+    OTHERSTRINGDECLARATION reduce using rule 73 (BOOLEAN -> FALSE .)
+    LOGIC_NOT       reduce using rule 73 (BOOLEAN -> FALSE .)
+    PUTS            reduce using rule 73 (BOOLEAN -> FALSE .)
+    GETS            reduce using rule 73 (BOOLEAN -> FALSE .)
+    TRUE            reduce using rule 73 (BOOLEAN -> FALSE .)
+    FALSE           reduce using rule 73 (BOOLEAN -> FALSE .)
+    ALFT            reduce using rule 73 (BOOLEAN -> FALSE .)
+    LPAREN          reduce using rule 73 (BOOLEAN -> FALSE .)
+    END             reduce using rule 73 (BOOLEAN -> FALSE .)
+    ELSE            reduce using rule 73 (BOOLEAN -> FALSE .)
+    FOR             reduce using rule 73 (BOOLEAN -> FALSE .)
+    IF              reduce using rule 73 (BOOLEAN -> FALSE .)
+    CLOSURECB       reduce using rule 73 (BOOLEAN -> FALSE .)
 
-  ! EQUAL           [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! EQUAL_STRICT    [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! LOGIC_AND       [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! LOGIC_OR        [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! PIPE            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! $end            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! ID              [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! NUMBER          [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! FLOAT           [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! STRING          [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! OTHERSTRINGDECLARATION [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! LOGIC_NOT       [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! PUTS            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! GETS            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! TRUE            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! FALSE           [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! ALFT            [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! LPAREN          [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! END             [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! FOR             [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! IF              [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
-  ! CLOSURECB       [ reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! EQUAL           [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! EQUAL_STRICT    [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! LOGIC_AND       [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! LOGIC_OR        [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! PIPE            [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! $end            [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! ID              [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! NUMBER          [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! FLOAT           [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! STRING          [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! OTHERSTRINGDECLARATION [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! LOGIC_NOT       [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! PUTS            [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! GETS            [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! TRUE            [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! FALSE           [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! ALFT            [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! LPAREN          [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! END             [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! ELSE            [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! FOR             [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! IF              [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
+  ! CLOSURECB       [ reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .) ]
 
 
 state 40
@@ -1716,6 +1750,7 @@ state 40
     ALFT            reduce using rule 33 (DATANF -> ID .)
     LPAREN          reduce using rule 33 (DATANF -> ID .)
     END             reduce using rule 33 (DATANF -> ID .)
+    ELSE            reduce using rule 33 (DATANF -> ID .)
     FOR             reduce using rule 33 (DATANF -> ID .)
     IF              reduce using rule 33 (DATANF -> ID .)
     CLOSURECB       reduce using rule 33 (DATANF -> ID .)
@@ -1742,52 +1777,52 @@ state 41
 
 state 42
 
-    (75) OPERATOR_MAT -> PLUS .
+    (76) OPERATOR_MAT -> PLUS .
 
-    LPAREN          reduce using rule 75 (OPERATOR_MAT -> PLUS .)
-    NUMBER          reduce using rule 75 (OPERATOR_MAT -> PLUS .)
-    FLOAT           reduce using rule 75 (OPERATOR_MAT -> PLUS .)
-    ID              reduce using rule 75 (OPERATOR_MAT -> PLUS .)
+    LPAREN          reduce using rule 76 (OPERATOR_MAT -> PLUS .)
+    NUMBER          reduce using rule 76 (OPERATOR_MAT -> PLUS .)
+    FLOAT           reduce using rule 76 (OPERATOR_MAT -> PLUS .)
+    ID              reduce using rule 76 (OPERATOR_MAT -> PLUS .)
 
 
 state 43
 
-    (76) OPERATOR_MAT -> MINUS .
+    (77) OPERATOR_MAT -> MINUS .
 
-    LPAREN          reduce using rule 76 (OPERATOR_MAT -> MINUS .)
-    NUMBER          reduce using rule 76 (OPERATOR_MAT -> MINUS .)
-    FLOAT           reduce using rule 76 (OPERATOR_MAT -> MINUS .)
-    ID              reduce using rule 76 (OPERATOR_MAT -> MINUS .)
+    LPAREN          reduce using rule 77 (OPERATOR_MAT -> MINUS .)
+    NUMBER          reduce using rule 77 (OPERATOR_MAT -> MINUS .)
+    FLOAT           reduce using rule 77 (OPERATOR_MAT -> MINUS .)
+    ID              reduce using rule 77 (OPERATOR_MAT -> MINUS .)
 
 
 state 44
 
-    (77) OPERATOR_MAT -> TIMES .
+    (78) OPERATOR_MAT -> TIMES .
 
-    LPAREN          reduce using rule 77 (OPERATOR_MAT -> TIMES .)
-    NUMBER          reduce using rule 77 (OPERATOR_MAT -> TIMES .)
-    FLOAT           reduce using rule 77 (OPERATOR_MAT -> TIMES .)
-    ID              reduce using rule 77 (OPERATOR_MAT -> TIMES .)
+    LPAREN          reduce using rule 78 (OPERATOR_MAT -> TIMES .)
+    NUMBER          reduce using rule 78 (OPERATOR_MAT -> TIMES .)
+    FLOAT           reduce using rule 78 (OPERATOR_MAT -> TIMES .)
+    ID              reduce using rule 78 (OPERATOR_MAT -> TIMES .)
 
 
 state 45
 
-    (78) OPERATOR_MAT -> DIVIDE .
+    (79) OPERATOR_MAT -> DIVIDE .
 
-    LPAREN          reduce using rule 78 (OPERATOR_MAT -> DIVIDE .)
-    NUMBER          reduce using rule 78 (OPERATOR_MAT -> DIVIDE .)
-    FLOAT           reduce using rule 78 (OPERATOR_MAT -> DIVIDE .)
-    ID              reduce using rule 78 (OPERATOR_MAT -> DIVIDE .)
+    LPAREN          reduce using rule 79 (OPERATOR_MAT -> DIVIDE .)
+    NUMBER          reduce using rule 79 (OPERATOR_MAT -> DIVIDE .)
+    FLOAT           reduce using rule 79 (OPERATOR_MAT -> DIVIDE .)
+    ID              reduce using rule 79 (OPERATOR_MAT -> DIVIDE .)
 
 
 state 46
 
-    (79) OPERATOR_MAT -> EXPONENTIATION .
+    (80) OPERATOR_MAT -> EXPONENTIATION .
 
-    LPAREN          reduce using rule 79 (OPERATOR_MAT -> EXPONENTIATION .)
-    NUMBER          reduce using rule 79 (OPERATOR_MAT -> EXPONENTIATION .)
-    FLOAT           reduce using rule 79 (OPERATOR_MAT -> EXPONENTIATION .)
-    ID              reduce using rule 79 (OPERATOR_MAT -> EXPONENTIATION .)
+    LPAREN          reduce using rule 80 (OPERATOR_MAT -> EXPONENTIATION .)
+    NUMBER          reduce using rule 80 (OPERATOR_MAT -> EXPONENTIATION .)
+    FLOAT           reduce using rule 80 (OPERATOR_MAT -> EXPONENTIATION .)
+    ID              reduce using rule 80 (OPERATOR_MAT -> EXPONENTIATION .)
 
 
 state 47
@@ -1826,6 +1861,7 @@ state 48
     ALFT            reduce using rule 16 (EXPRESSION -> PUTS EXPRESSION .)
     LPAREN          reduce using rule 16 (EXPRESSION -> PUTS EXPRESSION .)
     END             reduce using rule 16 (EXPRESSION -> PUTS EXPRESSION .)
+    ELSE            reduce using rule 16 (EXPRESSION -> PUTS EXPRESSION .)
     FOR             reduce using rule 16 (EXPRESSION -> PUTS EXPRESSION .)
     IF              reduce using rule 16 (EXPRESSION -> PUTS EXPRESSION .)
     CLOSURECB       reduce using rule 16 (EXPRESSION -> PUTS EXPRESSION .)
@@ -1850,6 +1886,7 @@ state 49
   ! reduce/reduce conflict for ALFT resolved using rule 17 (EXPRESSION -> PUTS ID .)
   ! reduce/reduce conflict for LPAREN resolved using rule 17 (EXPRESSION -> PUTS ID .)
   ! reduce/reduce conflict for END resolved using rule 17 (EXPRESSION -> PUTS ID .)
+  ! reduce/reduce conflict for ELSE resolved using rule 17 (EXPRESSION -> PUTS ID .)
   ! reduce/reduce conflict for FOR resolved using rule 17 (EXPRESSION -> PUTS ID .)
   ! reduce/reduce conflict for IF resolved using rule 17 (EXPRESSION -> PUTS ID .)
   ! reduce/reduce conflict for CLOSURECB resolved using rule 17 (EXPRESSION -> PUTS ID .)
@@ -1867,6 +1904,7 @@ state 49
     ALFT            reduce using rule 17 (EXPRESSION -> PUTS ID .)
     LPAREN          reduce using rule 17 (EXPRESSION -> PUTS ID .)
     END             reduce using rule 17 (EXPRESSION -> PUTS ID .)
+    ELSE            reduce using rule 17 (EXPRESSION -> PUTS ID .)
     FOR             reduce using rule 17 (EXPRESSION -> PUTS ID .)
     IF              reduce using rule 17 (EXPRESSION -> PUTS ID .)
     CLOSURECB       reduce using rule 17 (EXPRESSION -> PUTS ID .)
@@ -1899,6 +1937,7 @@ state 49
   ! ALFT            [ reduce using rule 33 (DATANF -> ID .) ]
   ! LPAREN          [ reduce using rule 33 (DATANF -> ID .) ]
   ! END             [ reduce using rule 33 (DATANF -> ID .) ]
+  ! ELSE            [ reduce using rule 33 (DATANF -> ID .) ]
   ! FOR             [ reduce using rule 33 (DATANF -> ID .) ]
   ! IF              [ reduce using rule 33 (DATANF -> ID .) ]
   ! CLOSURECB       [ reduce using rule 33 (DATANF -> ID .) ]
@@ -1924,10 +1963,10 @@ state 50
     (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
     (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
     (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -1984,6 +2023,7 @@ state 51
     ALFT            reduce using rule 18 (EXPRESSION -> GETS EXPRESSION .)
     LPAREN          reduce using rule 18 (EXPRESSION -> GETS EXPRESSION .)
     END             reduce using rule 18 (EXPRESSION -> GETS EXPRESSION .)
+    ELSE            reduce using rule 18 (EXPRESSION -> GETS EXPRESSION .)
     FOR             reduce using rule 18 (EXPRESSION -> GETS EXPRESSION .)
     IF              reduce using rule 18 (EXPRESSION -> GETS EXPRESSION .)
     CLOSURECB       reduce using rule 18 (EXPRESSION -> GETS EXPRESSION .)
@@ -2028,83 +2068,83 @@ state 54
 
 state 55
 
-    (80) OPERATOR_COMP_MAT -> EQUAL .
+    (81) OPERATOR_COMP_MAT -> EQUAL .
 
-    NUMBER          reduce using rule 80 (OPERATOR_COMP_MAT -> EQUAL .)
-    FLOAT           reduce using rule 80 (OPERATOR_COMP_MAT -> EQUAL .)
-    ID              reduce using rule 80 (OPERATOR_COMP_MAT -> EQUAL .)
+    NUMBER          reduce using rule 81 (OPERATOR_COMP_MAT -> EQUAL .)
+    FLOAT           reduce using rule 81 (OPERATOR_COMP_MAT -> EQUAL .)
+    ID              reduce using rule 81 (OPERATOR_COMP_MAT -> EQUAL .)
 
 
 state 56
 
-    (81) OPERATOR_COMP_MAT -> EQUAL_STRICT .
+    (82) OPERATOR_COMP_MAT -> EQUAL_STRICT .
 
-    NUMBER          reduce using rule 81 (OPERATOR_COMP_MAT -> EQUAL_STRICT .)
-    FLOAT           reduce using rule 81 (OPERATOR_COMP_MAT -> EQUAL_STRICT .)
-    ID              reduce using rule 81 (OPERATOR_COMP_MAT -> EQUAL_STRICT .)
+    NUMBER          reduce using rule 82 (OPERATOR_COMP_MAT -> EQUAL_STRICT .)
+    FLOAT           reduce using rule 82 (OPERATOR_COMP_MAT -> EQUAL_STRICT .)
+    ID              reduce using rule 82 (OPERATOR_COMP_MAT -> EQUAL_STRICT .)
 
 
 state 57
 
-    (82) OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL .
+    (83) OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL .
 
-    NUMBER          reduce using rule 82 (OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL .)
-    FLOAT           reduce using rule 82 (OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL .)
-    ID              reduce using rule 82 (OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL .)
+    NUMBER          reduce using rule 83 (OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL .)
+    FLOAT           reduce using rule 83 (OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL .)
+    ID              reduce using rule 83 (OPERATOR_COMP_MAT -> GREATER_THAN_OR_EQUAL .)
 
 
 state 58
 
-    (83) OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL .
+    (84) OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL .
 
-    NUMBER          reduce using rule 83 (OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL .)
-    FLOAT           reduce using rule 83 (OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL .)
-    ID              reduce using rule 83 (OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL .)
+    NUMBER          reduce using rule 84 (OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL .)
+    FLOAT           reduce using rule 84 (OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL .)
+    ID              reduce using rule 84 (OPERATOR_COMP_MAT -> MINOR_THAN_OR_EQUAL .)
 
 
 state 59
 
-    (84) OPERATOR_COMP_MAT -> MINOR .
+    (85) OPERATOR_COMP_MAT -> MINOR .
 
-    NUMBER          reduce using rule 84 (OPERATOR_COMP_MAT -> MINOR .)
-    FLOAT           reduce using rule 84 (OPERATOR_COMP_MAT -> MINOR .)
-    ID              reduce using rule 84 (OPERATOR_COMP_MAT -> MINOR .)
+    NUMBER          reduce using rule 85 (OPERATOR_COMP_MAT -> MINOR .)
+    FLOAT           reduce using rule 85 (OPERATOR_COMP_MAT -> MINOR .)
+    ID              reduce using rule 85 (OPERATOR_COMP_MAT -> MINOR .)
 
 
 state 60
 
-    (85) OPERATOR_COMP_MAT -> GREATER .
+    (86) OPERATOR_COMP_MAT -> GREATER .
 
-    NUMBER          reduce using rule 85 (OPERATOR_COMP_MAT -> GREATER .)
-    FLOAT           reduce using rule 85 (OPERATOR_COMP_MAT -> GREATER .)
-    ID              reduce using rule 85 (OPERATOR_COMP_MAT -> GREATER .)
+    NUMBER          reduce using rule 86 (OPERATOR_COMP_MAT -> GREATER .)
+    FLOAT           reduce using rule 86 (OPERATOR_COMP_MAT -> GREATER .)
+    ID              reduce using rule 86 (OPERATOR_COMP_MAT -> GREATER .)
 
 
 state 61
 
-    (86) OPERATOR_COMP_MAT -> LOGIC_AND .
+    (87) OPERATOR_COMP_MAT -> LOGIC_AND .
 
-    NUMBER          reduce using rule 86 (OPERATOR_COMP_MAT -> LOGIC_AND .)
-    FLOAT           reduce using rule 86 (OPERATOR_COMP_MAT -> LOGIC_AND .)
-    ID              reduce using rule 86 (OPERATOR_COMP_MAT -> LOGIC_AND .)
+    NUMBER          reduce using rule 87 (OPERATOR_COMP_MAT -> LOGIC_AND .)
+    FLOAT           reduce using rule 87 (OPERATOR_COMP_MAT -> LOGIC_AND .)
+    ID              reduce using rule 87 (OPERATOR_COMP_MAT -> LOGIC_AND .)
 
 
 state 62
 
-    (87) OPERATOR_COMP_MAT -> LOGIC_OR .
+    (88) OPERATOR_COMP_MAT -> LOGIC_OR .
 
-    NUMBER          reduce using rule 87 (OPERATOR_COMP_MAT -> LOGIC_OR .)
-    FLOAT           reduce using rule 87 (OPERATOR_COMP_MAT -> LOGIC_OR .)
-    ID              reduce using rule 87 (OPERATOR_COMP_MAT -> LOGIC_OR .)
+    NUMBER          reduce using rule 88 (OPERATOR_COMP_MAT -> LOGIC_OR .)
+    FLOAT           reduce using rule 88 (OPERATOR_COMP_MAT -> LOGIC_OR .)
+    ID              reduce using rule 88 (OPERATOR_COMP_MAT -> LOGIC_OR .)
 
 
 state 63
 
-    (88) OPERATOR_COMP_MAT -> PIPE .
+    (89) OPERATOR_COMP_MAT -> PIPE .
 
-    NUMBER          reduce using rule 88 (OPERATOR_COMP_MAT -> PIPE .)
-    FLOAT           reduce using rule 88 (OPERATOR_COMP_MAT -> PIPE .)
-    ID              reduce using rule 88 (OPERATOR_COMP_MAT -> PIPE .)
+    NUMBER          reduce using rule 89 (OPERATOR_COMP_MAT -> PIPE .)
+    FLOAT           reduce using rule 89 (OPERATOR_COMP_MAT -> PIPE .)
+    ID              reduce using rule 89 (OPERATOR_COMP_MAT -> PIPE .)
 
 
 state 64
@@ -2122,10 +2162,11 @@ state 65
     (57) DATA_REPEAT -> . DATA_ALLOWED_IN_FOR DATA_REPEAT
     (62) DATA_REPEAT -> . DATA_ALLOWED_IN_IF
     (63) DATA_REPEAT -> . DATA_ALLOWED_IN_IF DATA_REPEAT
+    (64) DATA_REPEAT -> . DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF
     (58) DATA_ALLOWED_IN_FOR -> . ASIGNATION
     (59) DATA_ALLOWED_IN_FOR -> . EXPRESSION
-    (64) DATA_ALLOWED_IN_IF -> . ASIGNATION
-    (65) DATA_ALLOWED_IN_IF -> . EXPRESSION
+    (65) DATA_ALLOWED_IN_IF -> . ASIGNATION
+    (66) DATA_ALLOWED_IN_IF -> . EXPRESSION
     (5) ASIGNATION -> . ID ASIGN EXPRESSION
     (6) EXPRESSION -> . NUMBER
     (7) EXPRESSION -> . FLOAT
@@ -2144,10 +2185,10 @@ state 65
     (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
     (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
     (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -2195,14 +2236,16 @@ state 66
 
     (62) DATA_REPEAT -> DATA_ALLOWED_IN_IF .
     (63) DATA_REPEAT -> DATA_ALLOWED_IN_IF . DATA_REPEAT
+    (64) DATA_REPEAT -> DATA_ALLOWED_IN_IF . ELSE DATA_ALLOWED_IN_IF
     (56) DATA_REPEAT -> . DATA_ALLOWED_IN_FOR
     (57) DATA_REPEAT -> . DATA_ALLOWED_IN_FOR DATA_REPEAT
     (62) DATA_REPEAT -> . DATA_ALLOWED_IN_IF
     (63) DATA_REPEAT -> . DATA_ALLOWED_IN_IF DATA_REPEAT
+    (64) DATA_REPEAT -> . DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF
     (58) DATA_ALLOWED_IN_FOR -> . ASIGNATION
     (59) DATA_ALLOWED_IN_FOR -> . EXPRESSION
-    (64) DATA_ALLOWED_IN_IF -> . ASIGNATION
-    (65) DATA_ALLOWED_IN_IF -> . EXPRESSION
+    (65) DATA_ALLOWED_IN_IF -> . ASIGNATION
+    (66) DATA_ALLOWED_IN_IF -> . EXPRESSION
     (5) ASIGNATION -> . ID ASIGN EXPRESSION
     (6) EXPRESSION -> . NUMBER
     (7) EXPRESSION -> . FLOAT
@@ -2221,10 +2264,10 @@ state 66
     (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
     (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
     (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -2241,6 +2284,7 @@ state 66
     (33) DATANF -> . ID
 
     END             reduce using rule 62 (DATA_REPEAT -> DATA_ALLOWED_IN_IF .)
+    ELSE            shift and go to state 104
     ID              shift and go to state 17
     NUMBER          shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2271,7 +2315,7 @@ state 66
 state 67
 
     (58) DATA_ALLOWED_IN_FOR -> ASIGNATION .
-    (64) DATA_ALLOWED_IN_IF -> ASIGNATION .
+    (65) DATA_ALLOWED_IN_IF -> ASIGNATION .
 
   ! reduce/reduce conflict for ID resolved using rule 58 (DATA_ALLOWED_IN_FOR -> ASIGNATION .)
   ! reduce/reduce conflict for NUMBER resolved using rule 58 (DATA_ALLOWED_IN_FOR -> ASIGNATION .)
@@ -2299,26 +2343,27 @@ state 67
     ALFT            reduce using rule 58 (DATA_ALLOWED_IN_FOR -> ASIGNATION .)
     LPAREN          reduce using rule 58 (DATA_ALLOWED_IN_FOR -> ASIGNATION .)
     END             reduce using rule 58 (DATA_ALLOWED_IN_FOR -> ASIGNATION .)
+    ELSE            reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .)
 
-  ! ID              [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! NUMBER          [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! FLOAT           [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! STRING          [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! OTHERSTRINGDECLARATION [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! LOGIC_NOT       [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! PUTS            [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! GETS            [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! TRUE            [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! FALSE           [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! ALFT            [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! LPAREN          [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
-  ! END             [ reduce using rule 64 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! ID              [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! NUMBER          [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! FLOAT           [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! STRING          [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! OTHERSTRINGDECLARATION [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! LOGIC_NOT       [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! PUTS            [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! GETS            [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! TRUE            [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! FALSE           [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! ALFT            [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! LPAREN          [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
+  ! END             [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .) ]
 
 
 state 68
 
     (59) DATA_ALLOWED_IN_FOR -> EXPRESSION .
-    (65) DATA_ALLOWED_IN_IF -> EXPRESSION .
+    (66) DATA_ALLOWED_IN_IF -> EXPRESSION .
 
   ! reduce/reduce conflict for ID resolved using rule 59 (DATA_ALLOWED_IN_FOR -> EXPRESSION .)
   ! reduce/reduce conflict for NUMBER resolved using rule 59 (DATA_ALLOWED_IN_FOR -> EXPRESSION .)
@@ -2346,90 +2391,91 @@ state 68
     ALFT            reduce using rule 59 (DATA_ALLOWED_IN_FOR -> EXPRESSION .)
     LPAREN          reduce using rule 59 (DATA_ALLOWED_IN_FOR -> EXPRESSION .)
     END             reduce using rule 59 (DATA_ALLOWED_IN_FOR -> EXPRESSION .)
+    ELSE            reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .)
 
-  ! ID              [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! NUMBER          [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! FLOAT           [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! STRING          [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! OTHERSTRINGDECLARATION [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! LOGIC_NOT       [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! PUTS            [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! GETS            [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! TRUE            [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! FALSE           [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! ALFT            [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! LPAREN          [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
-  ! END             [ reduce using rule 65 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! ID              [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! NUMBER          [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! FLOAT           [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! STRING          [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! OTHERSTRINGDECLARATION [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! LOGIC_NOT       [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! PUTS            [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! GETS            [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! TRUE            [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! FALSE           [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! ALFT            [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! LPAREN          [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
+  ! END             [ reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .) ]
 
 
 state 69
 
     (60) STRUCTURE_IF -> STRUCTURE_IN_IF DATA_REPEAT . END
 
-    END             shift and go to state 104
+    END             shift and go to state 105
 
 
 state 70
 
     (43) ARRAY -> ALFT DATA . ARGT
-    (70) DATA -> DATA . COMMA DATA
+    (71) DATA -> DATA . COMMA DATA
 
-    ARGT            shift and go to state 105
-    COMMA           shift and go to state 106
+    ARGT            shift and go to state 106
+    COMMA           shift and go to state 107
 
 
 state 71
 
-    (66) DATA -> NUMBER .
+    (67) DATA -> NUMBER .
 
-    ARGT            reduce using rule 66 (DATA -> NUMBER .)
-    COMMA           reduce using rule 66 (DATA -> NUMBER .)
+    ARGT            reduce using rule 67 (DATA -> NUMBER .)
+    COMMA           reduce using rule 67 (DATA -> NUMBER .)
 
 
 state 72
 
-    (67) DATA -> FLOAT .
+    (68) DATA -> FLOAT .
 
-    ARGT            reduce using rule 67 (DATA -> FLOAT .)
-    COMMA           reduce using rule 67 (DATA -> FLOAT .)
+    ARGT            reduce using rule 68 (DATA -> FLOAT .)
+    COMMA           reduce using rule 68 (DATA -> FLOAT .)
 
 
 state 73
 
-    (68) DATA -> BOOLEAN .
+    (69) DATA -> BOOLEAN .
 
-    ARGT            reduce using rule 68 (DATA -> BOOLEAN .)
-    COMMA           reduce using rule 68 (DATA -> BOOLEAN .)
+    ARGT            reduce using rule 69 (DATA -> BOOLEAN .)
+    COMMA           reduce using rule 69 (DATA -> BOOLEAN .)
 
 
 state 74
 
-    (69) DATA -> STRING .
+    (70) DATA -> STRING .
 
-    ARGT            reduce using rule 69 (DATA -> STRING .)
-    COMMA           reduce using rule 69 (DATA -> STRING .)
+    ARGT            reduce using rule 70 (DATA -> STRING .)
+    COMMA           reduce using rule 70 (DATA -> STRING .)
 
 
 state 75
 
-    (73) BOOLEAN -> LOGIC_NOT . TRUE
-    (74) BOOLEAN -> LOGIC_NOT . FALSE
+    (74) BOOLEAN -> LOGIC_NOT . TRUE
+    (75) BOOLEAN -> LOGIC_NOT . FALSE
 
-    TRUE            shift and go to state 107
-    FALSE           shift and go to state 108
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 109
 
 
 state 76
 
     (29) EXPRESSION_MAT -> LPAREN EXPRESSION_MAT . RPAREN
     (28) EXPRESSION_MAT -> EXPRESSION_MAT . OPERATOR_MAT EXPRESSION_MAT
-    (75) OPERATOR_MAT -> . PLUS
-    (76) OPERATOR_MAT -> . MINUS
-    (77) OPERATOR_MAT -> . TIMES
-    (78) OPERATOR_MAT -> . DIVIDE
-    (79) OPERATOR_MAT -> . EXPONENTIATION
+    (76) OPERATOR_MAT -> . PLUS
+    (77) OPERATOR_MAT -> . MINUS
+    (78) OPERATOR_MAT -> . TIMES
+    (79) OPERATOR_MAT -> . DIVIDE
+    (80) OPERATOR_MAT -> . EXPONENTIATION
 
-    RPAREN          shift and go to state 109
+    RPAREN          shift and go to state 110
     PLUS            shift and go to state 42
     MINUS           shift and go to state 43
     TIMES           shift and go to state 44
@@ -2462,6 +2508,7 @@ state 77
     ALFT            reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     LPAREN          reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     END             reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
+    ELSE            reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     FOR             reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     IF              reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
     CLOSURECB       reduce using rule 30 (EXPRESSION_MAT -> DATANF .)
@@ -2491,6 +2538,7 @@ state 78
     ALFT            reduce using rule 31 (DATANF -> NUMBER .)
     LPAREN          reduce using rule 31 (DATANF -> NUMBER .)
     END             reduce using rule 31 (DATANF -> NUMBER .)
+    ELSE            reduce using rule 31 (DATANF -> NUMBER .)
     FOR             reduce using rule 31 (DATANF -> NUMBER .)
     IF              reduce using rule 31 (DATANF -> NUMBER .)
     CLOSURECB       reduce using rule 31 (DATANF -> NUMBER .)
@@ -2520,6 +2568,7 @@ state 79
     ALFT            reduce using rule 32 (DATANF -> FLOAT .)
     LPAREN          reduce using rule 32 (DATANF -> FLOAT .)
     END             reduce using rule 32 (DATANF -> FLOAT .)
+    ELSE            reduce using rule 32 (DATANF -> FLOAT .)
     FOR             reduce using rule 32 (DATANF -> FLOAT .)
     IF              reduce using rule 32 (DATANF -> FLOAT .)
     CLOSURECB       reduce using rule 32 (DATANF -> FLOAT .)
@@ -2530,22 +2579,22 @@ state 80
     (54) STRUCTURE_IN_FOR -> FOR ID . IN ARRAY DO
     (55) STRUCTURE_IN_FOR -> FOR ID . IN ID DO
 
-    IN              shift and go to state 110
+    IN              shift and go to state 111
 
 
 state 81
 
     (61) STRUCTURE_IN_IF -> IF LPAREN . BOOLEAN RPAREN
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
 
     TRUE            shift and go to state 24
     FALSE           shift and go to state 25
     LOGIC_NOT       shift and go to state 75
 
-    BOOLEAN                        shift and go to state 111
+    BOOLEAN                        shift and go to state 112
 
 state 82
 
@@ -2565,6 +2614,7 @@ state 82
     ALFT            reduce using rule 20 (EXPRESSION -> BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN .)
     LPAREN          reduce using rule 20 (EXPRESSION -> BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN .)
     END             reduce using rule 20 (EXPRESSION -> BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN .)
+    ELSE            reduce using rule 20 (EXPRESSION -> BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN .)
     FOR             reduce using rule 20 (EXPRESSION -> BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN .)
     IF              reduce using rule 20 (EXPRESSION -> BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN .)
     CLOSURECB       reduce using rule 20 (EXPRESSION -> BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN .)
@@ -2588,6 +2638,7 @@ state 83
     ALFT            reduce using rule 44 (FUNTIONS_ARRAY -> ARRAY POINT FUNTIONS_ALLOWED_ARRAY .)
     LPAREN          reduce using rule 44 (FUNTIONS_ARRAY -> ARRAY POINT FUNTIONS_ALLOWED_ARRAY .)
     END             reduce using rule 44 (FUNTIONS_ARRAY -> ARRAY POINT FUNTIONS_ALLOWED_ARRAY .)
+    ELSE            reduce using rule 44 (FUNTIONS_ARRAY -> ARRAY POINT FUNTIONS_ALLOWED_ARRAY .)
     FOR             reduce using rule 44 (FUNTIONS_ARRAY -> ARRAY POINT FUNTIONS_ALLOWED_ARRAY .)
     IF              reduce using rule 44 (FUNTIONS_ARRAY -> ARRAY POINT FUNTIONS_ALLOWED_ARRAY .)
     CLOSURECB       reduce using rule 44 (FUNTIONS_ARRAY -> ARRAY POINT FUNTIONS_ALLOWED_ARRAY .)
@@ -2611,6 +2662,7 @@ state 84
     ALFT            reduce using rule 45 (FUNTIONS_ALLOWED_ARRAY -> MIN .)
     LPAREN          reduce using rule 45 (FUNTIONS_ALLOWED_ARRAY -> MIN .)
     END             reduce using rule 45 (FUNTIONS_ALLOWED_ARRAY -> MIN .)
+    ELSE            reduce using rule 45 (FUNTIONS_ALLOWED_ARRAY -> MIN .)
     FOR             reduce using rule 45 (FUNTIONS_ALLOWED_ARRAY -> MIN .)
     IF              reduce using rule 45 (FUNTIONS_ALLOWED_ARRAY -> MIN .)
     CLOSURECB       reduce using rule 45 (FUNTIONS_ALLOWED_ARRAY -> MIN .)
@@ -2634,6 +2686,7 @@ state 85
     ALFT            reduce using rule 46 (FUNTIONS_ALLOWED_ARRAY -> FIRST .)
     LPAREN          reduce using rule 46 (FUNTIONS_ALLOWED_ARRAY -> FIRST .)
     END             reduce using rule 46 (FUNTIONS_ALLOWED_ARRAY -> FIRST .)
+    ELSE            reduce using rule 46 (FUNTIONS_ALLOWED_ARRAY -> FIRST .)
     FOR             reduce using rule 46 (FUNTIONS_ALLOWED_ARRAY -> FIRST .)
     IF              reduce using rule 46 (FUNTIONS_ALLOWED_ARRAY -> FIRST .)
     CLOSURECB       reduce using rule 46 (FUNTIONS_ALLOWED_ARRAY -> FIRST .)
@@ -2657,6 +2710,7 @@ state 86
     ALFT            reduce using rule 47 (FUNTIONS_ALLOWED_ARRAY -> MAP_ARRAY .)
     LPAREN          reduce using rule 47 (FUNTIONS_ALLOWED_ARRAY -> MAP_ARRAY .)
     END             reduce using rule 47 (FUNTIONS_ALLOWED_ARRAY -> MAP_ARRAY .)
+    ELSE            reduce using rule 47 (FUNTIONS_ALLOWED_ARRAY -> MAP_ARRAY .)
     FOR             reduce using rule 47 (FUNTIONS_ALLOWED_ARRAY -> MAP_ARRAY .)
     IF              reduce using rule 47 (FUNTIONS_ALLOWED_ARRAY -> MAP_ARRAY .)
     CLOSURECB       reduce using rule 47 (FUNTIONS_ALLOWED_ARRAY -> MAP_ARRAY .)
@@ -2666,18 +2720,18 @@ state 87
 
     (48) MAP_ARRAY -> MAP . OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB
 
-    OPENINGCB       shift and go to state 112
+    OPENINGCB       shift and go to state 113
 
 
 state 88
 
     (28) EXPRESSION_MAT -> EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT .
     (28) EXPRESSION_MAT -> EXPRESSION_MAT . OPERATOR_MAT EXPRESSION_MAT
-    (75) OPERATOR_MAT -> . PLUS
-    (76) OPERATOR_MAT -> . MINUS
-    (77) OPERATOR_MAT -> . TIMES
-    (78) OPERATOR_MAT -> . DIVIDE
-    (79) OPERATOR_MAT -> . EXPONENTIATION
+    (76) OPERATOR_MAT -> . PLUS
+    (77) OPERATOR_MAT -> . MINUS
+    (78) OPERATOR_MAT -> . TIMES
+    (79) OPERATOR_MAT -> . DIVIDE
+    (80) OPERATOR_MAT -> . EXPONENTIATION
 
   ! shift/reduce conflict for PLUS resolved as shift
   ! shift/reduce conflict for MINUS resolved as shift
@@ -2698,6 +2752,7 @@ state 88
     ALFT            reduce using rule 28 (EXPRESSION_MAT -> EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT .)
     LPAREN          reduce using rule 28 (EXPRESSION_MAT -> EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT .)
     END             reduce using rule 28 (EXPRESSION_MAT -> EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT .)
+    ELSE            reduce using rule 28 (EXPRESSION_MAT -> EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT .)
     FOR             reduce using rule 28 (EXPRESSION_MAT -> EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT .)
     IF              reduce using rule 28 (EXPRESSION_MAT -> EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT .)
     CLOSURECB       reduce using rule 28 (EXPRESSION_MAT -> EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT .)
@@ -2736,6 +2791,7 @@ state 89
     ALFT            reduce using rule 34 (EXPRESSION_CONCAT -> EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT .)
     LPAREN          reduce using rule 34 (EXPRESSION_CONCAT -> EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT .)
     END             reduce using rule 34 (EXPRESSION_CONCAT -> EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT .)
+    ELSE            reduce using rule 34 (EXPRESSION_CONCAT -> EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT .)
     FOR             reduce using rule 34 (EXPRESSION_CONCAT -> EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT .)
     IF              reduce using rule 34 (EXPRESSION_CONCAT -> EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT .)
     CLOSURECB       reduce using rule 34 (EXPRESSION_CONCAT -> EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT .)
@@ -2763,6 +2819,7 @@ state 90
     ALFT            reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     LPAREN          reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     END             reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
+    ELSE            reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     FOR             reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     IF              reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
     CLOSURECB       reduce using rule 35 (EXPRESSION_CONCAT -> DATASTRING .)
@@ -2787,6 +2844,7 @@ state 91
     ALFT            reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .)
     LPAREN          reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .)
     END             reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .)
+    ELSE            reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .)
     FOR             reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .)
     IF              reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .)
     CLOSURECB       reduce using rule 36 (EXPRESSION_CONCAT -> ARRAY .)
@@ -2811,6 +2869,7 @@ state 92
     ALFT            reduce using rule 37 (DATASTRING -> STRING .)
     LPAREN          reduce using rule 37 (DATASTRING -> STRING .)
     END             reduce using rule 37 (DATASTRING -> STRING .)
+    ELSE            reduce using rule 37 (DATASTRING -> STRING .)
     FOR             reduce using rule 37 (DATASTRING -> STRING .)
     IF              reduce using rule 37 (DATASTRING -> STRING .)
     CLOSURECB       reduce using rule 37 (DATASTRING -> STRING .)
@@ -2835,6 +2894,7 @@ state 93
     ALFT            reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .)
     LPAREN          reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .)
     END             reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .)
+    ELSE            reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .)
     FOR             reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .)
     IF              reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .)
     CLOSURECB       reduce using rule 38 (DATASTRING -> OTHERSTRINGDECLARATION .)
@@ -2858,6 +2918,7 @@ state 94
     ALFT            reduce using rule 5 (ASIGNATION -> ID ASIGN EXPRESSION .)
     LPAREN          reduce using rule 5 (ASIGNATION -> ID ASIGN EXPRESSION .)
     END             reduce using rule 5 (ASIGNATION -> ID ASIGN EXPRESSION .)
+    ELSE            reduce using rule 5 (ASIGNATION -> ID ASIGN EXPRESSION .)
     FOR             reduce using rule 5 (ASIGNATION -> ID ASIGN EXPRESSION .)
     IF              reduce using rule 5 (ASIGNATION -> ID ASIGN EXPRESSION .)
     CLOSURECB       reduce using rule 5 (ASIGNATION -> ID ASIGN EXPRESSION .)
@@ -2881,6 +2942,7 @@ state 95
     ALFT            reduce using rule 21 (EXPRESSION -> DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING .)
     LPAREN          reduce using rule 21 (EXPRESSION -> DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING .)
     END             reduce using rule 21 (EXPRESSION -> DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING .)
+    ELSE            reduce using rule 21 (EXPRESSION -> DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING .)
     FOR             reduce using rule 21 (EXPRESSION -> DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING .)
     IF              reduce using rule 21 (EXPRESSION -> DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING .)
     CLOSURECB       reduce using rule 21 (EXPRESSION -> DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING .)
@@ -2904,6 +2966,7 @@ state 96
     ALFT            reduce using rule 39 (FUNCTIONS_STRING -> DATASTRING POINT FUNCTIONS_ALLOWED_STRING .)
     LPAREN          reduce using rule 39 (FUNCTIONS_STRING -> DATASTRING POINT FUNCTIONS_ALLOWED_STRING .)
     END             reduce using rule 39 (FUNCTIONS_STRING -> DATASTRING POINT FUNCTIONS_ALLOWED_STRING .)
+    ELSE            reduce using rule 39 (FUNCTIONS_STRING -> DATASTRING POINT FUNCTIONS_ALLOWED_STRING .)
     FOR             reduce using rule 39 (FUNCTIONS_STRING -> DATASTRING POINT FUNCTIONS_ALLOWED_STRING .)
     IF              reduce using rule 39 (FUNCTIONS_STRING -> DATASTRING POINT FUNCTIONS_ALLOWED_STRING .)
     CLOSURECB       reduce using rule 39 (FUNCTIONS_STRING -> DATASTRING POINT FUNCTIONS_ALLOWED_STRING .)
@@ -2913,14 +2976,14 @@ state 97
 
     (40) FUNCTIONS_ALLOWED_STRING -> INCLUDE . QUESTION DATASTRING
 
-    QUESTION        shift and go to state 113
+    QUESTION        shift and go to state 114
 
 
 state 98
 
     (41) FUNCTIONS_ALLOWED_STRING -> EMPTY . QUESTION
 
-    QUESTION        shift and go to state 114
+    QUESTION        shift and go to state 115
 
 
 state 99
@@ -2941,6 +3004,7 @@ state 99
     ALFT            reduce using rule 42 (FUNCTIONS_ALLOWED_STRING -> UPCASE .)
     LPAREN          reduce using rule 42 (FUNCTIONS_ALLOWED_STRING -> UPCASE .)
     END             reduce using rule 42 (FUNCTIONS_ALLOWED_STRING -> UPCASE .)
+    ELSE            reduce using rule 42 (FUNCTIONS_ALLOWED_STRING -> UPCASE .)
     FOR             reduce using rule 42 (FUNCTIONS_ALLOWED_STRING -> UPCASE .)
     IF              reduce using rule 42 (FUNCTIONS_ALLOWED_STRING -> UPCASE .)
     CLOSURECB       reduce using rule 42 (FUNCTIONS_ALLOWED_STRING -> UPCASE .)
@@ -2964,6 +3028,7 @@ state 100
     ALFT            reduce using rule 27 (EXPRESSION -> DATANF OPERATOR_COMP_MAT DATANF .)
     LPAREN          reduce using rule 27 (EXPRESSION -> DATANF OPERATOR_COMP_MAT DATANF .)
     END             reduce using rule 27 (EXPRESSION -> DATANF OPERATOR_COMP_MAT DATANF .)
+    ELSE            reduce using rule 27 (EXPRESSION -> DATANF OPERATOR_COMP_MAT DATANF .)
     FOR             reduce using rule 27 (EXPRESSION -> DATANF OPERATOR_COMP_MAT DATANF .)
     IF              reduce using rule 27 (EXPRESSION -> DATANF OPERATOR_COMP_MAT DATANF .)
     CLOSURECB       reduce using rule 27 (EXPRESSION -> DATANF OPERATOR_COMP_MAT DATANF .)
@@ -3007,6 +3072,73 @@ state 103
 
 state 104
 
+    (64) DATA_REPEAT -> DATA_ALLOWED_IN_IF ELSE . DATA_ALLOWED_IN_IF
+    (65) DATA_ALLOWED_IN_IF -> . ASIGNATION
+    (66) DATA_ALLOWED_IN_IF -> . EXPRESSION
+    (5) ASIGNATION -> . ID ASIGN EXPRESSION
+    (6) EXPRESSION -> . NUMBER
+    (7) EXPRESSION -> . FLOAT
+    (8) EXPRESSION -> . BOOLEAN
+    (9) EXPRESSION -> . STRING
+    (10) EXPRESSION -> . OTHERSTRINGDECLARATION
+    (11) EXPRESSION -> . ARRAY
+    (12) EXPRESSION -> . FUNTIONS_ARRAY
+    (13) EXPRESSION -> . LOGIC_NOT EXPRESSION
+    (14) EXPRESSION -> . EXPRESSION_MAT
+    (15) EXPRESSION -> . EXPRESSION_CONCAT
+    (16) EXPRESSION -> . PUTS EXPRESSION
+    (17) EXPRESSION -> . PUTS ID
+    (18) EXPRESSION -> . GETS EXPRESSION
+    (19) EXPRESSION -> . FUNCTIONS_STRING
+    (20) EXPRESSION -> . BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
+    (21) EXPRESSION -> . DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
+    (27) EXPRESSION -> . DATANF OPERATOR_COMP_MAT DATANF
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
+    (43) ARRAY -> . ALFT DATA ARGT
+    (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
+    (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
+    (29) EXPRESSION_MAT -> . LPAREN EXPRESSION_MAT RPAREN
+    (30) EXPRESSION_MAT -> . DATANF
+    (34) EXPRESSION_CONCAT -> . EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT
+    (35) EXPRESSION_CONCAT -> . DATASTRING
+    (36) EXPRESSION_CONCAT -> . ARRAY
+    (39) FUNCTIONS_STRING -> . DATASTRING POINT FUNCTIONS_ALLOWED_STRING
+    (37) DATASTRING -> . STRING
+    (38) DATASTRING -> . OTHERSTRINGDECLARATION
+    (31) DATANF -> . NUMBER
+    (32) DATANF -> . FLOAT
+    (33) DATANF -> . ID
+
+    ID              shift and go to state 17
+    NUMBER          shift and go to state 6
+    FLOAT           shift and go to state 7
+    STRING          shift and go to state 9
+    OTHERSTRINGDECLARATION shift and go to state 10
+    LOGIC_NOT       shift and go to state 13
+    PUTS            shift and go to state 16
+    GETS            shift and go to state 18
+    TRUE            shift and go to state 24
+    FALSE           shift and go to state 25
+    ALFT            shift and go to state 26
+    LPAREN          shift and go to state 27
+
+    DATA_ALLOWED_IN_IF             shift and go to state 116
+    ASIGNATION                     shift and go to state 117
+    EXPRESSION                     shift and go to state 118
+    BOOLEAN                        shift and go to state 8
+    ARRAY                          shift and go to state 11
+    FUNTIONS_ARRAY                 shift and go to state 12
+    EXPRESSION_MAT                 shift and go to state 14
+    EXPRESSION_CONCAT              shift and go to state 15
+    FUNCTIONS_STRING               shift and go to state 19
+    DATASTRING                     shift and go to state 20
+    DATANF                         shift and go to state 21
+
+state 105
+
     (60) STRUCTURE_IF -> STRUCTURE_IN_IF DATA_REPEAT END .
 
     $end            reduce using rule 60 (STRUCTURE_IF -> STRUCTURE_IN_IF DATA_REPEAT END .)
@@ -3027,7 +3159,7 @@ state 104
     CLOSURECB       reduce using rule 60 (STRUCTURE_IF -> STRUCTURE_IN_IF DATA_REPEAT END .)
 
 
-state 105
+state 106
 
     (43) ARRAY -> ALFT DATA ARGT .
 
@@ -3047,24 +3179,25 @@ state 105
     ALFT            reduce using rule 43 (ARRAY -> ALFT DATA ARGT .)
     LPAREN          reduce using rule 43 (ARRAY -> ALFT DATA ARGT .)
     END             reduce using rule 43 (ARRAY -> ALFT DATA ARGT .)
+    ELSE            reduce using rule 43 (ARRAY -> ALFT DATA ARGT .)
     FOR             reduce using rule 43 (ARRAY -> ALFT DATA ARGT .)
     IF              reduce using rule 43 (ARRAY -> ALFT DATA ARGT .)
     CLOSURECB       reduce using rule 43 (ARRAY -> ALFT DATA ARGT .)
     DO              reduce using rule 43 (ARRAY -> ALFT DATA ARGT .)
 
 
-state 106
+state 107
 
-    (70) DATA -> DATA COMMA . DATA
-    (66) DATA -> . NUMBER
-    (67) DATA -> . FLOAT
-    (68) DATA -> . BOOLEAN
-    (69) DATA -> . STRING
-    (70) DATA -> . DATA COMMA DATA
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (71) DATA -> DATA COMMA . DATA
+    (67) DATA -> . NUMBER
+    (68) DATA -> . FLOAT
+    (69) DATA -> . BOOLEAN
+    (70) DATA -> . STRING
+    (71) DATA -> . DATA COMMA DATA
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
 
     NUMBER          shift and go to state 71
     FLOAT           shift and go to state 72
@@ -3073,62 +3206,64 @@ state 106
     FALSE           shift and go to state 25
     LOGIC_NOT       shift and go to state 75
 
-    DATA                           shift and go to state 115
+    DATA                           shift and go to state 119
     BOOLEAN                        shift and go to state 73
-
-state 107
-
-    (73) BOOLEAN -> LOGIC_NOT TRUE .
-
-    ARGT            reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    COMMA           reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    $end            reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    ID              reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    NUMBER          reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    FLOAT           reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    STRING          reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    OTHERSTRINGDECLARATION reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    LOGIC_NOT       reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    PUTS            reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    GETS            reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    TRUE            reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    FALSE           reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    ALFT            reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    LPAREN          reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    END             reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    FOR             reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    IF              reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    CLOSURECB       reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-    RPAREN          reduce using rule 73 (BOOLEAN -> LOGIC_NOT TRUE .)
-
 
 state 108
 
-    (74) BOOLEAN -> LOGIC_NOT FALSE .
+    (74) BOOLEAN -> LOGIC_NOT TRUE .
 
-    ARGT            reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    COMMA           reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    $end            reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    ID              reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    NUMBER          reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    FLOAT           reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    STRING          reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    OTHERSTRINGDECLARATION reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    LOGIC_NOT       reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    PUTS            reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    GETS            reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    TRUE            reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    FALSE           reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    ALFT            reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    LPAREN          reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    END             reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    FOR             reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    IF              reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    CLOSURECB       reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
-    RPAREN          reduce using rule 74 (BOOLEAN -> LOGIC_NOT FALSE .)
+    ARGT            reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    COMMA           reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    $end            reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    ID              reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    NUMBER          reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    FLOAT           reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    STRING          reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    OTHERSTRINGDECLARATION reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    LOGIC_NOT       reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    PUTS            reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    GETS            reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    TRUE            reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    FALSE           reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    ALFT            reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    LPAREN          reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    END             reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    ELSE            reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    FOR             reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    IF              reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    CLOSURECB       reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
+    RPAREN          reduce using rule 74 (BOOLEAN -> LOGIC_NOT TRUE .)
 
 
 state 109
+
+    (75) BOOLEAN -> LOGIC_NOT FALSE .
+
+    ARGT            reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    COMMA           reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    $end            reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    ID              reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    NUMBER          reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    FLOAT           reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    STRING          reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    OTHERSTRINGDECLARATION reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    LOGIC_NOT       reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    PUTS            reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    GETS            reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    TRUE            reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    FALSE           reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    ALFT            reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    LPAREN          reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    END             reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    ELSE            reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    FOR             reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    IF              reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    CLOSURECB       reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+    RPAREN          reduce using rule 75 (BOOLEAN -> LOGIC_NOT FALSE .)
+
+
+state 110
 
     (29) EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .
 
@@ -3151,38 +3286,39 @@ state 109
     ALFT            reduce using rule 29 (EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .)
     LPAREN          reduce using rule 29 (EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .)
     END             reduce using rule 29 (EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .)
+    ELSE            reduce using rule 29 (EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .)
     FOR             reduce using rule 29 (EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .)
     IF              reduce using rule 29 (EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .)
     CLOSURECB       reduce using rule 29 (EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .)
     RPAREN          reduce using rule 29 (EXPRESSION_MAT -> LPAREN EXPRESSION_MAT RPAREN .)
 
 
-state 110
+state 111
 
     (54) STRUCTURE_IN_FOR -> FOR ID IN . ARRAY DO
     (55) STRUCTURE_IN_FOR -> FOR ID IN . ID DO
     (43) ARRAY -> . ALFT DATA ARGT
 
-    ID              shift and go to state 116
+    ID              shift and go to state 120
     ALFT            shift and go to state 26
 
-    ARRAY                          shift and go to state 117
-
-state 111
-
-    (61) STRUCTURE_IN_IF -> IF LPAREN BOOLEAN . RPAREN
-
-    RPAREN          shift and go to state 118
-
+    ARRAY                          shift and go to state 121
 
 state 112
 
-    (48) MAP_ARRAY -> MAP OPENINGCB . PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB
+    (61) STRUCTURE_IN_IF -> IF LPAREN BOOLEAN . RPAREN
 
-    PIPE            shift and go to state 119
+    RPAREN          shift and go to state 122
 
 
 state 113
+
+    (48) MAP_ARRAY -> MAP OPENINGCB . PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB
+
+    PIPE            shift and go to state 123
+
+
+state 114
 
     (40) FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION . DATASTRING
     (37) DATASTRING -> . STRING
@@ -3191,9 +3327,9 @@ state 113
     STRING          shift and go to state 92
     OTHERSTRINGDECLARATION shift and go to state 93
 
-    DATASTRING                     shift and go to state 120
+    DATASTRING                     shift and go to state 124
 
-state 114
+state 115
 
     (41) FUNCTIONS_ALLOWED_STRING -> EMPTY QUESTION .
 
@@ -3211,38 +3347,60 @@ state 114
     ALFT            reduce using rule 41 (FUNCTIONS_ALLOWED_STRING -> EMPTY QUESTION .)
     LPAREN          reduce using rule 41 (FUNCTIONS_ALLOWED_STRING -> EMPTY QUESTION .)
     END             reduce using rule 41 (FUNCTIONS_ALLOWED_STRING -> EMPTY QUESTION .)
+    ELSE            reduce using rule 41 (FUNCTIONS_ALLOWED_STRING -> EMPTY QUESTION .)
     FOR             reduce using rule 41 (FUNCTIONS_ALLOWED_STRING -> EMPTY QUESTION .)
     IF              reduce using rule 41 (FUNCTIONS_ALLOWED_STRING -> EMPTY QUESTION .)
     CLOSURECB       reduce using rule 41 (FUNCTIONS_ALLOWED_STRING -> EMPTY QUESTION .)
 
 
-state 115
-
-    (70) DATA -> DATA COMMA DATA .
-    (70) DATA -> DATA . COMMA DATA
-
-  ! shift/reduce conflict for COMMA resolved as shift
-    ARGT            reduce using rule 70 (DATA -> DATA COMMA DATA .)
-    COMMA           shift and go to state 106
-
-  ! COMMA           [ reduce using rule 70 (DATA -> DATA COMMA DATA .) ]
-
-
 state 116
 
-    (55) STRUCTURE_IN_FOR -> FOR ID IN ID . DO
+    (64) DATA_REPEAT -> DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF .
 
-    DO              shift and go to state 121
+    END             reduce using rule 64 (DATA_REPEAT -> DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF .)
 
 
 state 117
 
-    (54) STRUCTURE_IN_FOR -> FOR ID IN ARRAY . DO
+    (65) DATA_ALLOWED_IN_IF -> ASIGNATION .
 
-    DO              shift and go to state 122
+    END             reduce using rule 65 (DATA_ALLOWED_IN_IF -> ASIGNATION .)
 
 
 state 118
+
+    (66) DATA_ALLOWED_IN_IF -> EXPRESSION .
+
+    END             reduce using rule 66 (DATA_ALLOWED_IN_IF -> EXPRESSION .)
+
+
+state 119
+
+    (71) DATA -> DATA COMMA DATA .
+    (71) DATA -> DATA . COMMA DATA
+
+  ! shift/reduce conflict for COMMA resolved as shift
+    ARGT            reduce using rule 71 (DATA -> DATA COMMA DATA .)
+    COMMA           shift and go to state 107
+
+  ! COMMA           [ reduce using rule 71 (DATA -> DATA COMMA DATA .) ]
+
+
+state 120
+
+    (55) STRUCTURE_IN_FOR -> FOR ID IN ID . DO
+
+    DO              shift and go to state 125
+
+
+state 121
+
+    (54) STRUCTURE_IN_FOR -> FOR ID IN ARRAY . DO
+
+    DO              shift and go to state 126
+
+
+state 122
 
     (61) STRUCTURE_IN_IF -> IF LPAREN BOOLEAN RPAREN .
 
@@ -3260,14 +3418,14 @@ state 118
     LPAREN          reduce using rule 61 (STRUCTURE_IN_IF -> IF LPAREN BOOLEAN RPAREN .)
 
 
-state 119
+state 123
 
     (48) MAP_ARRAY -> MAP OPENINGCB PIPE . ID PIPE DATA_REPEAT_MAP CLOSURECB
 
-    ID              shift and go to state 123
+    ID              shift and go to state 127
 
 
-state 120
+state 124
 
     (40) FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION DATASTRING .
 
@@ -3285,12 +3443,13 @@ state 120
     ALFT            reduce using rule 40 (FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION DATASTRING .)
     LPAREN          reduce using rule 40 (FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION DATASTRING .)
     END             reduce using rule 40 (FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION DATASTRING .)
+    ELSE            reduce using rule 40 (FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION DATASTRING .)
     FOR             reduce using rule 40 (FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION DATASTRING .)
     IF              reduce using rule 40 (FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION DATASTRING .)
     CLOSURECB       reduce using rule 40 (FUNCTIONS_ALLOWED_STRING -> INCLUDE QUESTION DATASTRING .)
 
 
-state 121
+state 125
 
     (55) STRUCTURE_IN_FOR -> FOR ID IN ID DO .
 
@@ -3308,7 +3467,7 @@ state 121
     LPAREN          reduce using rule 55 (STRUCTURE_IN_FOR -> FOR ID IN ID DO .)
 
 
-state 122
+state 126
 
     (54) STRUCTURE_IN_FOR -> FOR ID IN ARRAY DO .
 
@@ -3326,14 +3485,14 @@ state 122
     LPAREN          reduce using rule 54 (STRUCTURE_IN_FOR -> FOR ID IN ARRAY DO .)
 
 
-state 123
+state 127
 
     (48) MAP_ARRAY -> MAP OPENINGCB PIPE ID . PIPE DATA_REPEAT_MAP CLOSURECB
 
-    PIPE            shift and go to state 124
+    PIPE            shift and go to state 128
 
 
-state 124
+state 128
 
     (48) MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE . DATA_REPEAT_MAP CLOSURECB
     (49) DATA_REPEAT_MAP -> . STATEMENT
@@ -3362,10 +3521,10 @@ state 124
     (5) ASIGNATION -> . ID ASIGN EXPRESSION
     (53) STRUCTURE_FOR -> . STRUCTURE_IN_FOR DATA_REPEAT END
     (60) STRUCTURE_IF -> . STRUCTURE_IN_IF DATA_REPEAT END
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -3399,8 +3558,8 @@ state 124
     FOR             shift and go to state 28
     IF              shift and go to state 29
 
-    DATA_REPEAT_MAP                shift and go to state 125
-    STATEMENT                      shift and go to state 126
+    DATA_REPEAT_MAP                shift and go to state 129
+    STATEMENT                      shift and go to state 130
     EXPRESSION                     shift and go to state 2
     ASIGNATION                     shift and go to state 3
     STRUCTURE_FOR                  shift and go to state 4
@@ -3416,14 +3575,14 @@ state 124
     STRUCTURE_IN_FOR               shift and go to state 22
     STRUCTURE_IN_IF                shift and go to state 23
 
-state 125
+state 129
 
     (48) MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP . CLOSURECB
 
-    CLOSURECB       shift and go to state 127
+    CLOSURECB       shift and go to state 131
 
 
-state 126
+state 130
 
     (49) DATA_REPEAT_MAP -> STATEMENT .
     (50) DATA_REPEAT_MAP -> STATEMENT . DATA_REPEAT_MAP
@@ -3453,10 +3612,10 @@ state 126
     (5) ASIGNATION -> . ID ASIGN EXPRESSION
     (53) STRUCTURE_FOR -> . STRUCTURE_IN_FOR DATA_REPEAT END
     (60) STRUCTURE_IF -> . STRUCTURE_IN_IF DATA_REPEAT END
-    (71) BOOLEAN -> . TRUE
-    (72) BOOLEAN -> . FALSE
-    (73) BOOLEAN -> . LOGIC_NOT TRUE
-    (74) BOOLEAN -> . LOGIC_NOT FALSE
+    (72) BOOLEAN -> . TRUE
+    (73) BOOLEAN -> . FALSE
+    (74) BOOLEAN -> . LOGIC_NOT TRUE
+    (75) BOOLEAN -> . LOGIC_NOT FALSE
     (43) ARRAY -> . ALFT DATA ARGT
     (44) FUNTIONS_ARRAY -> . ARRAY POINT FUNTIONS_ALLOWED_ARRAY
     (28) EXPRESSION_MAT -> . EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
@@ -3491,8 +3650,8 @@ state 126
     FOR             shift and go to state 28
     IF              shift and go to state 29
 
-    STATEMENT                      shift and go to state 126
-    DATA_REPEAT_MAP                shift and go to state 128
+    STATEMENT                      shift and go to state 130
+    DATA_REPEAT_MAP                shift and go to state 132
     EXPRESSION                     shift and go to state 2
     ASIGNATION                     shift and go to state 3
     STRUCTURE_FOR                  shift and go to state 4
@@ -3508,7 +3667,7 @@ state 126
     STRUCTURE_IN_FOR               shift and go to state 22
     STRUCTURE_IN_IF                shift and go to state 23
 
-state 127
+state 131
 
     (48) MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB .
 
@@ -3526,12 +3685,13 @@ state 127
     ALFT            reduce using rule 48 (MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB .)
     LPAREN          reduce using rule 48 (MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB .)
     END             reduce using rule 48 (MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB .)
+    ELSE            reduce using rule 48 (MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB .)
     FOR             reduce using rule 48 (MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB .)
     IF              reduce using rule 48 (MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB .)
     CLOSURECB       reduce using rule 48 (MAP_ARRAY -> MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB .)
 
 
-state 128
+state 132
 
     (50) DATA_REPEAT_MAP -> STATEMENT DATA_REPEAT_MAP .
 
@@ -3546,7 +3706,7 @@ WARNING: shift/reduce conflict for TIMES in state 88 resolved as shift
 WARNING: shift/reduce conflict for DIVIDE in state 88 resolved as shift
 WARNING: shift/reduce conflict for EXPONENTIATION in state 88 resolved as shift
 WARNING: shift/reduce conflict for PLUS in state 89 resolved as shift
-WARNING: shift/reduce conflict for COMMA in state 115 resolved as shift
+WARNING: shift/reduce conflict for COMMA in state 119 resolved as shift
 WARNING: reduce/reduce conflict in state 6 resolved using rule (EXPRESSION -> NUMBER)
 WARNING: rejected rule (DATANF -> NUMBER) in state 6
 WARNING: reduce/reduce conflict in state 7 resolved using rule (EXPRESSION -> FLOAT)
@@ -3567,5 +3727,3 @@ WARNING: reduce/reduce conflict in state 67 resolved using rule (DATA_ALLOWED_IN
 WARNING: rejected rule (DATA_ALLOWED_IN_IF -> ASIGNATION) in state 67
 WARNING: reduce/reduce conflict in state 68 resolved using rule (DATA_ALLOWED_IN_FOR -> EXPRESSION)
 WARNING: rejected rule (DATA_ALLOWED_IN_IF -> EXPRESSION) in state 68
-WARNING: Rule (DATA_ALLOWED_IN_IF -> ASIGNATION) is never reduced
-WARNING: Rule (DATA_ALLOWED_IN_IF -> EXPRESSION) is never reduced

@@ -137,12 +137,12 @@ def p_STRUCTURE_IF(p):
 
       STRUCTURE_IN_IF : IF LPAREN BOOLEAN RPAREN
 
-
       DATA_REPEAT : DATA_ALLOWED_IN_IF
                   | DATA_ALLOWED_IN_IF DATA_REPEAT
+                  | DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF
 
       DATA_ALLOWED_IN_IF : ASIGNATION
-                          | EXPRESSION
+                        | EXPRESSION
   '''
 
 
