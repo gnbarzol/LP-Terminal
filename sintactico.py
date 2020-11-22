@@ -7,6 +7,7 @@ def p_STATEMENT(p):
   ''' STATEMENT : EXPRESSION
                 | ASIGNATION
                 | STRUCTURE_FOR
+                | STRUCTURE_IF
   '''
 
 def p_ASIGNATION(p):
@@ -129,6 +130,22 @@ def p_STRUCTURE_FOR(p):
       DATA_ALLOWED_IN_FOR : ASIGNATION
                           | EXPRESSION
   '''
+
+# Permite reconocer la estructura de control if
+def p_STRUCTURE_IF(p):
+  ''' STRUCTURE_IF : STRUCTURE_IN_IF DATA_REPEAT END
+
+      STRUCTURE_IN_IF : IF LPAREN BOOLEAN RPAREN
+
+
+      DATA_REPEAT : DATA_ALLOWED_IN_IF
+                  | DATA_ALLOWED_IN_IF DATA_REPEAT
+
+      DATA_ALLOWED_IN_IF : ASIGNATION
+                          | EXPRESSION
+  '''
+
+
 
 def p_DATA(p):
   '''DATA : NUMBER
