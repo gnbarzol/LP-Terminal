@@ -14,7 +14,7 @@ def p_ASIGNATION(p):
   p[0] = 'ASIGNATION'
 
 def p_EXPRESSION(p):
-  ''' EXPRESSION : NUMBER 
+  ''' EXPRESSION : NUMBER
                 | FLOAT
                 | BOOLEAN
                 | STRING
@@ -50,6 +50,13 @@ def p_EXPRESSION_MAT(p):
   '''
   p[0] = "EXPRESSION_MAT"
 
+def p_DATA_NUMBER_FLOAT(p):
+  '''DATANF : NUMBER
+            | FLOAT
+            | ID
+  '''
+  p[0] = p[1]
+
 # Permite reconocer una concatenacion de strings o arrays
 def p_EXPRESSION_CONCAT(p):
   ''' EXPRESSION_CONCAT : EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT
@@ -74,7 +81,7 @@ def p_FUNTIONS_ARRAY(p):
 # Estructura para reconcer un map y el contenido permitido dentro de el.
 def p_MAP_ARRAY(p):
   '''MAP_ARRAY : MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB
-    
+
     DATA_REPEAT_MAP : STATEMENT
                     | STATEMENT DATA_REPEAT_MAP
 
@@ -107,14 +114,10 @@ def p_DATA(p):
 def p_DATA_ANY(p):
   'DATA : DATA COMMA DATA'
 
-def p_DATA_NUMBER_FLOAT(p):
-  '''DATANF : NUMBER 
-            | FLOAT
-  '''
-  p[0] = p[1]
+
 
 def p_DATA_STRINGS(p):
-  '''DATASTRING : STRING 
+  '''DATASTRING : STRING
                 | OTHERSTRINGDECLARATION
   '''
   p[0] = p[1]
@@ -122,14 +125,14 @@ def p_DATA_STRINGS(p):
 def p_BOOLEAN(p):
   '''BOOLEAN : TRUE
             | FALSE
-  ''' 
+  '''
   p[0] = p[1]
 
 def p_OPERATOR_MAT(p):
   '''OPERATOR_MAT : PLUS
                   | MINUS
                   | TIMES
-                  | DIVIDE 
+                  | DIVIDE
                   | EXPONENTIATION
   '''
   p[0] = p[1]
@@ -149,7 +152,7 @@ def p_OPERATOR_COMP_MAT(p):
                       | GREATER_THAN_OR_EQUAL
                       | MINOR_THAN_OR_EQUAL
                       | MINOR
-                      | GREATER 
+                      | GREATER
                       | LOGIC_AND
                       | LOGIC_OR
                       | PIPE
@@ -158,13 +161,13 @@ def p_OPERATOR_COMP_MAT(p):
 
 def p_ERROR(p):
   print("Syntax error in input", p)
- 
+
  # Build the parser
 parser = yacc.yacc()
  
 while True:
   try:
-    s = raw_input('calc > ')
+    s = input('calc > ')
   except EOFError:
     break
   if not s: continue
