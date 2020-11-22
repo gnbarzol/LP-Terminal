@@ -26,7 +26,7 @@ def p_EXPRESSION(p):
                 | EXPRESSION_CONCAT
                 | PUTS EXPRESSION
                 | PUTS ID
-                | GETS
+                | GETS EXPRESSION
   '''
   p[0] = p[1]
 
@@ -72,6 +72,21 @@ def p_EXPRESSION_CONCAT(p):
   ''' EXPRESSION_CONCAT : EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT
       EXPRESSION_CONCAT : DATASTRING
                         | ARRAY
+  '''
+
+def p_DATA_STRINGS(p):
+  '''DATASTRING : STRING
+                | OTHERSTRINGDECLARATION
+  '''
+  p[0] = p[1]
+
+# Funciones que un String puede llamar
+def p_FUNCTIONS_STRING(p):
+  '''FUNCTIONS_STRING : DATASTRING POINT FUNCTIONS_ALLOWED_STRING
+
+    FUNCTIONS_ALLOWED_STRING : INCLUDE QUESTION STRING
+                            | EMPTY QUESTION
+                            | UPCASE
   '''
 
 # Permite reconocer arreglos
@@ -124,13 +139,6 @@ def p_DATA(p):
 def p_DATA_ANY(p):
   'DATA : DATA COMMA DATA'
 
-
-
-def p_DATA_STRINGS(p):
-  '''DATASTRING : STRING
-                | OTHERSTRINGDECLARATION
-  '''
-  p[0] = p[1]
 
 def p_BOOLEAN(p):
   '''BOOLEAN : TRUE

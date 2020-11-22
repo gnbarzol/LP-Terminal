@@ -22,7 +22,8 @@ reserved = {
     'map': 'MAP',
     'has_value': 'HAS_VALUE',
     'merge': 'MERGE',
-    'size': 'SIZE'
+    'size': 'SIZE',
+    'include': 'INCLUDE'
 
  }
 # List of token names. This is always required
