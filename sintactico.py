@@ -37,6 +37,16 @@ def p_EXPRESSION_COMP_BOOLEAN(p):
   '''
   p[0] = "EXPRESSION_COMP_BOOLEAN"
 
+def p_OPERATOR_COMP_BOOLEAN(p):
+  '''OPERATOR_COMP_BOOLEAN : EQUAL
+                          | EQUAL_STRICT
+                          | LOGIC_AND
+                          | LOGIC_OR
+                          | PIPE
+
+  '''
+  p[0] = p[1]
+
 # Permite comparaciones entre numeros y floats
 def p_EXPRESSION_COMP_MAT(p):
   'EXPRESSION : DATANF OPERATOR_COMP_MAT DATANF'
@@ -125,6 +135,8 @@ def p_DATA_STRINGS(p):
 def p_BOOLEAN(p):
   '''BOOLEAN : TRUE
             | FALSE
+            | LOGIC_NOT TRUE
+            | LOGIC_NOT FALSE
   '''
   p[0] = p[1]
 
@@ -137,14 +149,7 @@ def p_OPERATOR_MAT(p):
   '''
   p[0] = p[1]
 
-def p_OPERATOR_COMP_BOOLEAN(p):
-  '''OPERATOR_COMP_BOOLEAN : EQUAL
-                          | EQUAL_STRICT
-                          | LOGIC_AND
-                          | LOGIC_OR
-                          | PIPE
-  '''
-  p[0] = p[1]
+
 
 def p_OPERATOR_COMP_MAT(p):
   '''OPERATOR_COMP_MAT : EQUAL
