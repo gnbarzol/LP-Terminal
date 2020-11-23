@@ -9,6 +9,7 @@ def p_STATEMENT(p):
                 | ASIGNATION
                 | STRUCTURE_FOR
                 | STRUCTURE_IF
+                | STRUCTURE_WHILE
   '''
 #GARY BARZOLA
 def p_ASIGNATION(p):
@@ -23,7 +24,9 @@ def p_EXPRESSION(p):
                 | STRING
                 | OTHERSTRINGDECLARATION
                 | ARRAY
+                | HASH
                 | FUNTIONS_ARRAY
+                | FUNTIONS_HASH
                 | LOGIC_NOT EXPRESSION
                 | EXPRESSION_MAT
                 | EXPRESSION_CONCAT
@@ -76,6 +79,7 @@ def p_EXPRESSION_CONCAT(p):
   ''' EXPRESSION_CONCAT : EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT
       EXPRESSION_CONCAT : DATASTRING
                         | ARRAY
+
   '''
 
 def p_DATA_STRINGS(p):
@@ -119,6 +123,35 @@ def p_MAP_ARRAY(p):
                         | EXPRESSION
   '''
 
+# Permite reconocer Hash.
+def p_HASH(p):
+  'HASH : OPENINGCB REGISTRY CLOSURECB'
+  p[0] = 'HASH'
+
+
+def p_REGISTRY(p):
+  'REGISTRY : STRING HASHROCKET KEY'
+  p[0] = 'p_REGISTRY'
+
+def p_KEY(p):
+  '''KEY : NUMBER
+          | STRING
+  '''
+  p[0] = p[1]
+
+
+# Funciones que un hash puede llamar
+def p_FUNTIONS_HASH(p):
+  '''FUNTIONS_HASH : HASH POINT FUNTIONS_ALLOWED_HASH
+
+    FUNTIONS_ALLOWED_HASH : HAS_VALUE QUESTION KEY
+                          | MERGE LPAREN HASH RPAREN
+                          | SIZE
+  '''
+
+def p_REGISTRY_ANY(p):
+  'REGISTRY : REGISTRY COMMA REGISTRY'
+
 # Permite reconocer la estructura de control for
 def p_STRUCTURE_FOR(p):
   ''' STRUCTURE_FOR : STRUCTURE_IN_FOR DATA_REPEAT END
@@ -147,6 +180,18 @@ def p_STRUCTURE_IF(p):
                         | EXPRESSION
   '''
 
+# Permite reconocer la estructura de control While
+def p_STRUCTURE_WHILE(p):
+  ''' STRUCTURE_WHILE : STRUCTURE_IN_WHILE DATA_REPEAT END
+
+      STRUCTURE_IN_WHILE : WHILE LPAREN TRUE RPAREN
+
+      DATA_REPEAT : DATA_ALLOWED_IN_WHILE
+                  | DATA_ALLOWED_IN_WHILE DATA_REPEAT
+
+      DATA_ALLOWED_IN_WHILE : ASIGNATION
+                            | EXPRESSION
+  '''
 
 
 def p_DATA(p):
