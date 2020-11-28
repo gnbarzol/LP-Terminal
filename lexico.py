@@ -132,10 +132,12 @@ t_OPENINGCB = r'\{'
 t_CLOSURECB = r'\}'
 t_HASHROCKET = r'=>'
 
-# Build the lexer
+
 lexer = lex.lex()
 
 def analyze(data):
+    # Build the lexer
+    lexer = lex.lex()
     lexer.input(data)
     while True:
         tok = lexer.token()
@@ -144,11 +146,15 @@ def analyze(data):
         print(tok)
 
 
-archivo = open("codigo.txt","r")
 
 
+
+
+
+'''''
 for line in archivo:
     print(">>>"+ line)
     analyze(line)
     if len(line)==0:
         break
+        '''
