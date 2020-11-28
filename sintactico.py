@@ -242,8 +242,9 @@ def p_ERROR(p):
   print("Syntax error in input", p)
 
  # Build the parser
+
 parser = yacc.yacc()
- 
+'''''
 while True:
   try:
     s = input('calc > ')
@@ -251,4 +252,4 @@ while True:
     break
   if not s: continue
   result = parser.parse(s)
-  print(result)
+  print(result)'''

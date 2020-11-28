@@ -2,6 +2,7 @@ import tkinter
 from tkinter import Tk
 import FuncionesVentana as fn
 from lexico import lexer
+from sintactico import parser
 
 root = Tk()
 root.geometry("550x300") #width height root
@@ -20,10 +21,22 @@ def analyzeLexico(resul_text_area):
     result_text_area.delete("1.0", 'end-1c')
     archivo = open("prueba.txt", "r")
     for line in archivo:
-        print(">>>" + line)
-        analyze(line,result_text_area)
         if len(line) == 0:
             break
+        print(">>>" + line)
+        analyze(line,result_text_area)
+
+
+
+def analyzeSintactico(result_text_area):
+    result_text_area.delete("1.0", 'end-1c')
+    archivo = open("prueba.txt", "r")
+    for line in archivo:
+        result = parser.parse(line)
+        print(result)
+        linea = str(result) + "\n"
+        result_text_area.insert(tkinter.INSERT, linea)
+
 
 def analizador_lexico(codigo_text_area):
     if(fn.existeCodigo(codigo_text_area)):
@@ -31,7 +44,8 @@ def analizador_lexico(codigo_text_area):
 
 def analizador_sintactico(codigo_text_area):
     if (fn.existeCodigo(codigo_text_area)):
-        print("")
+        analyzeSintactico(result_text_area)
+        print("asdf")
 
 
 
@@ -51,7 +65,7 @@ boton_lexico = tkinter.Button(root, text=" Analizador Lexico ", padx=40, pady=30
 boton_lexico.place(x=270,y=60,widt=100,height=75)
 
 boton_sintactico = tkinter.Button(root, text="Analizador Sintactico", padx=40, pady=30,
-                        command = lambda: analizador_sintactico("Diego")) #padx lo hara crecer
+                        command = lambda: analizador_sintactico(codigo_text_area)) #padx lo hara crecer
                                           #la funcion va solo el nombre sin parentesis
 boton_sintactico.place(x=385,y=60,widt=120,height=75)
 

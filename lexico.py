@@ -134,7 +134,7 @@ t_HASHROCKET = r'=>'
 
 
 lexer = lex.lex()
-
+'''''
 def analyze(data):
     # Build the lexer
     lexer = lex.lex()
@@ -144,7 +144,7 @@ def analyze(data):
         if not tok:
             break  # No more input
         print(tok)
-
+'''
 
 
 
