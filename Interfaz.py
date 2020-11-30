@@ -5,7 +5,7 @@ from lexico import lexer
 from sintactico import parser
 
 root = Tk()
-root.geometry("550x300") #width height root
+root.geometry("650x300") #width height root
 
 def analyze(data,resul_text_area):
     lexer.input(data)
@@ -33,7 +33,8 @@ def analyzeSintactico(result_text_area):
     archivo = open("prueba.txt", "r")
     for line in archivo:
         result = parser.parse(line)
-        print(result)
+        if result == "None" :
+            result = "Accept"
         linea = str(result) + "\n"
         result_text_area.insert(tkinter.INSERT, linea)
 
@@ -45,32 +46,33 @@ def analizador_lexico(codigo_text_area):
 def analizador_sintactico(codigo_text_area):
     if (fn.existeCodigo(codigo_text_area)):
         analyzeSintactico(result_text_area)
-        print("asdf")
 
 
 
 
 etiqueta = tkinter.Label(root, text ="Analizador Ruby")
-etiqueta.place(x=10,y=10, widt=100,height=30)
+etiqueta.place(x=10,y=10, width=100,height=30)
 
 codigo_text_area = tkinter.Text(root, height=7, width=30,)
-codigo_text_area.place(x=10,y=50,widt=250,height=100)
+codigo_text_area.configure(relief="sunken", borderwidth=1)
+codigo_text_area.place(x=10,y=50,width=250,height=100)
 
 
 
-boton_lexico = tkinter.Button(root, text=" Analizador Lexico ", padx=40, pady=30,
+boton_lexico = tkinter.Button(root, text=" Analizador Léxico ", padx=40, pady=30,
                         command = lambda: analizador_lexico(codigo_text_area)) #padx lo hara crecer
                                           #la funcion va solo el nombre sin parentesis
 
-boton_lexico.place(x=270,y=60,widt=100,height=75)
+boton_lexico.place(x=270,y=60,width=150,height=75)
 
 boton_sintactico = tkinter.Button(root, text="Analizador Sintactico", padx=40, pady=30,
                         command = lambda: analizador_sintactico(codigo_text_area)) #padx lo hara crecer
                                           #la funcion va solo el nombre sin parentesis
-boton_sintactico.place(x=385,y=60,widt=120,height=75)
+boton_sintactico.place(x=450,y=60,width=160,height=75)
 
 result_text_area = tkinter.Text(root, height=5, width=40)
-result_text_area.place(x=150,y=160,widt=300,height=100)
+result_text_area.configure(relief="sunken", borderwidth=1)
+result_text_area.place(x=270,y=160,width=340,height=100)
 
 
 
