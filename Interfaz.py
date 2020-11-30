@@ -32,9 +32,14 @@ def analyzeSintactico(result_text_area):
     result_text_area.delete("1.0", 'end-1c')
     archivo = open("prueba.txt", "r")
     for line in archivo:
+        # if line != "\n":
+        #     result = parser.parse(line)
+        #     if result:
+        #         linea = str(result) + "\n"
+        #     else:
+        #         linea = "Error en la sintaxis \n"
+        #     result_text_area.insert(tkinter.INSERT, linea)
         result = parser.parse(line)
-        if result == "None" :
-            result = "Accept"
         linea = str(result) + "\n"
         result_text_area.insert(tkinter.INSERT, linea)
 
@@ -59,7 +64,7 @@ codigo_text_area.place(x=10,y=50,width=250,height=100)
 
 
 
-boton_lexico = tkinter.Button(root, text=" Analizador Léxico ", padx=40, pady=30,
+boton_lexico = tkinter.Button(root, text=" Analizador Lexico ", padx=40, pady=30,
                         command = lambda: analizador_lexico(codigo_text_area)) #padx lo hara crecer
                                           #la funcion va solo el nombre sin parentesis
 

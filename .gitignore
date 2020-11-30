@@ -1,0 +1,6 @@
+*.pyc
+*.out
+*.docx
+.idea
+parsetab.py
+__pycache__

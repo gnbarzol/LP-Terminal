@@ -93,14 +93,14 @@ def t_NUMBER(t):
 
 # Define a rule so we can track line numbers
 def t_newline(t):
- r'\n+'
- t.lexer.lineno += len(t.value)
+    r'\n+'
+    t.lexer.lineno += len(t.value)
 
 # Error handling rule
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
-
+    return "Illegal character " + t.value[0]
 
 
 # Regular expression rules for simple tokens
@@ -132,8 +132,8 @@ t_OPENINGCB = r'\{'
 t_CLOSURECB = r'\}'
 t_HASHROCKET = r'=>'
 
-
 lexer = lex.lex()
+
 '''''
 def analyze(data):
     # Build the lexer
@@ -144,17 +144,10 @@ def analyze(data):
         if not tok:
             break  # No more input
         print(tok)
-'''
 
-
-
-
-
-
-'''''
 for line in archivo:
     print(">>>"+ line)
     analyze(line)
     if len(line)==0:
         break
-        '''
+'''

@@ -116,8 +116,8 @@ def p_FUNTIONS_ARRAY(p):
 def p_MAP_ARRAY(p):
   '''MAP_ARRAY : MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB
 
-    DATA_REPEAT_MAP : STATEMENT
-                    | STATEMENT DATA_REPEAT_MAP
+    DATA_REPEAT_MAP : DATA_ALLOWED_IN_MAP
+                    | DATA_ALLOWED_IN_MAP DATA_REPEAT_MAP
 
     DATA_ALLOWED_IN_MAP : ASIGNATION
                         | EXPRESSION
@@ -238,18 +238,26 @@ def p_OPERATOR_COMP_MAT(p):
   '''
   p[0] = p[1]
 
-def p_ERROR(p):
-  print("Syntax error in input", p)
+def p_OPERATOR_COMP_MAT_ERROR(p):
+  'OPERATOR_COMP_MAT : error'
+  print("Error de sintaxis en la declaracion de operador.")
+  return "Error de sintaxis en la declaracion de operador"
 
- # Build the parser
+def p_error(p):
+  if p:
+    print("Syntax error at token", p.type)
+  else:
+    print("Syntax error at EOF")
 
+# Build the parser
 parser = yacc.yacc()
-'''''
-while True:
-  try:
-    s = input('calc > ')
-  except EOFError:
-    break
-  if not s: continue
-  result = parser.parse(s)
-  print(result)'''
+
+# while True:
+#   try:
+#     s = raw_input('calc > ')
+#   except EOFError:
+#     break
+#   if not s: continue
+#   result = parser.parse(s)
+#   if result:
+#     print(result)
