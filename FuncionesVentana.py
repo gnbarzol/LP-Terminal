@@ -4,6 +4,8 @@ def existeCodigo(codigo_text_area):
     if txt == "":
         return False
     else:
+        # if txt[0:1] == "\t":
+            # Tab
         guardarArchivo(txt)
 
         return True

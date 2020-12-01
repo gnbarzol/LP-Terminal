@@ -1,1 +1,1 @@
-a~
+{"clave" => 1, "clave2" =>2}.size

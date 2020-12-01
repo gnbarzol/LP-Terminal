@@ -8,9 +8,9 @@ for i in arr do
   puts i
 end
 
-arr.min
-arr.first
-arr.map{|x| x*2}
+["1","2"].min
+["1","2"].first
+["1","2"].map{|x| x*2}
 
 flotante = 3.4
 
@@ -38,20 +38,20 @@ string = %q(hola)
 
 entero = 1
 
-var.includes?"h"
-var.empty?
-var.upcase
+"mi".includes?"h"
+"var".empty?
+"mi".upcase
 
 #End Diego Rojas
 
 #Start Angie Flores
 mapa ={"clave" => 1, "clave2" =>2}
 
-mapa.has_value?1
+{"clave" => 1, "clave2" =>2}.has_value?1
 
-mapa.merge({"clave2" =>2 })
+{"clave" => 1, "clave2" =>2}.merge({"clave2" =>2 })
 
-mapa.size
+{"clave" => 1, "clave2" =>2}.size
 
 i=1
 while(i<10)

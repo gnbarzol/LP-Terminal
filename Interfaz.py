@@ -5,6 +5,7 @@ from lexico import lexer
 from sintactico import parser
 
 root = Tk()
+root.title("RUBY")
 root.geometry("650x300") #width height root
 
 def analyze(data,resul_text_area):
@@ -32,16 +33,14 @@ def analyzeSintactico(result_text_area):
     result_text_area.delete("1.0", 'end-1c')
     archivo = open("prueba.txt", "r")
     for line in archivo:
-        # if line != "\n":
-        #     result = parser.parse(line)
-        #     if result:
-        #         linea = str(result) + "\n"
-        #     else:
-        #         linea = "Error en la sintaxis \n"
-        #     result_text_area.insert(tkinter.INSERT, linea)
-        result = parser.parse(line)
-        linea = str(result) + "\n"
-        result_text_area.insert(tkinter.INSERT, linea)
+        if line != "\n":
+            linea = ""
+            result = parser.parse(line)
+            if result:
+                linea = str(result) + "\n"
+            else:
+                linea = "Error en la sintaxis \n"
+            result_text_area.insert(tkinter.INSERT, linea)
 
 
 def analizador_lexico(codigo_text_area):

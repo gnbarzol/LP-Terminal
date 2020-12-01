@@ -4,24 +4,29 @@ from lexico import tokens
 import ply.yacc as yacc
 
 
-def p_STATEMENT(p):
+def p_statement(p):
   ''' STATEMENT : EXPRESSION
                 | ASIGNATION
                 | STRUCTURE_FOR
                 | STRUCTURE_IF
                 | STRUCTURE_WHILE
   '''
-#GARY BARZOLA
-def p_ASIGNATION(p):
+  p[0] = p[1]
+
+
+def p_asignation(p):
   'ASIGNATION : ID ASIGN EXPRESSION'
-  p[0] = 'ASIGNATION'
+  p[0] = ('ASIGNATION', p[1], p[2], p[3])
 
 
-def p_EXPRESSION(p):
+def p_expression(p):
   ''' EXPRESSION : NUMBER
+                | MINUS NUMBER
                 | FLOAT
+                | MINUS FLOAT
                 | BOOLEAN
                 | STRING
+                | GETS
                 | OTHERSTRINGDECLARATION
                 | ARRAY
                 | HASH
@@ -32,19 +37,18 @@ def p_EXPRESSION(p):
                 | EXPRESSION_CONCAT
                 | PUTS EXPRESSION
                 | PUTS ID
-                | GETS EXPRESSION
                 | FUNCTIONS_STRING
   '''
-  p[0] = p[1]
+  p[0] = ('EXPRESION', p[1])
 
 # Permite comparaciones entre booleanos y strings
-def p_EXPRESSION_COMP_BOOLEAN(p):
+def p_expression_comp_boolean(p):
   ''' EXPRESSION : BOOLEAN OPERATOR_COMP_BOOLEAN BOOLEAN
                 | DATASTRING OPERATOR_COMP_BOOLEAN DATASTRING
   '''
-  p[0] = "EXPRESSION_COMP_BOOLEAN"
+  p[0] = ('EXPRESSION__BOOLEAN', p[1], p[2], p[3])
 
-def p_OPERATOR_COMP_BOOLEAN(p):
+def p_operator_comp_boolean(p):
   '''OPERATOR_COMP_BOOLEAN : EQUAL
                           | EQUAL_STRICT
                           | LOGIC_AND
@@ -52,44 +56,42 @@ def p_OPERATOR_COMP_BOOLEAN(p):
                           | PIPE
 
   '''
-  p[0] = p[1]
+  p[0] = ('OPERATOR_BOOLEAN', p[1])
 
 # Permite comparaciones entre numeros y floats
-def p_EXPRESSION_COMP_MAT(p):
+def p_expression_comp_mat(p):
   'EXPRESSION : DATANF OPERATOR_COMP_MAT DATANF'
-  p[0] = "EXPRESSION_COMP_MAT"
+  p[0] =  ('EXPRESSION', p[1], p[2], p[3])
 
 # Permite operaciones mat entre numeros y floats
-def p_EXPRESSION_MAT(p):
+def p_expression_mat(p):
   ''' EXPRESSION_MAT : EXPRESSION_MAT OPERATOR_MAT EXPRESSION_MAT
                     | LPAREN EXPRESSION_MAT RPAREN
       EXPRESSION_MAT : DATANF
   '''
-  p[0] = "EXPRESSION_MAT"
+  p[0] = 'EXPRESSION_MAT'
 
-def p_DATA_NUMBER_FLOAT(p):
+def p_data_number_float(p):
   '''DATANF : NUMBER
             | FLOAT
             | ID
+            | MINUS NUMBER
+            | MINUS FLOAT
   '''
-  p[0] = p[1]
+  p[0] = ('DATA', p[0])
 
 # Permite reconocer una concatenacion de strings o arrays
-def p_EXPRESSION_CONCAT(p):
+def p_expression_concat(p):
   ''' EXPRESSION_CONCAT : EXPRESSION_CONCAT PLUS EXPRESSION_CONCAT
       EXPRESSION_CONCAT : DATASTRING
                         | ARRAY
 
   '''
+  p[0] = "EXPRESSION_CONCAT"
 
-def p_DATA_STRINGS(p):
-  '''DATASTRING : STRING
-                | OTHERSTRINGDECLARATION
-  '''
-  p[0] = p[1]
 
 # Funciones que un String puede llamar
-def p_FUNCTIONS_STRING(p):
+def p_functions_string(p):
   '''
   FUNCTIONS_STRING : DATASTRING POINT FUNCTIONS_ALLOWED_STRING
 
@@ -97,24 +99,47 @@ def p_FUNCTIONS_STRING(p):
                             | EMPTY QUESTION
                             | UPCASE
   '''
+  p[0] = "FUNCTIONS_STRING"
 
+
+def p_data_strings(p):
+  '''DATASTRING : STRING
+                | OTHERSTRINGDECLARATION
+  '''
+  p[0] = ('STRING', p[1])
+  
 # Permite reconocer arreglos
-def p_ARRAY(p):
-  'ARRAY : ALFT DATA ARGT'
-  p[0] = 'ARRAY'
+def p_array(p):
+  '''ARRAY : ALFT ARGT
+            | ALFT DATA ARGT
+  '''
+  if len(p) == 3:
+    p[0] = ('ARRAY', p[1], p[2], p[3])
+  elif len(p) == 2:
+    p[0] = ('ARRAY', p[1], p[2])
+  else:
+    p[0] = ('ARRAY')
+
 
 # Funciones que un array puede llamar
-def p_FUNTIONS_ARRAY(p):
+def p_funtions_array(p):
   '''FUNTIONS_ARRAY : ARRAY POINT FUNTIONS_ALLOWED_ARRAY
 
     FUNTIONS_ALLOWED_ARRAY : MIN
                           | FIRST
                           | MAP_ARRAY
   '''
+  if len(p) == 3:
+    p[0] = ('FUNTIONS_ARRAY', p[1], p[2], p[3])
+  else:
+    p[0] = ('FUNTIONS_ARRAY')
+
 
 # Estructura para reconcer un map y el contenido permitido dentro de el.
-def p_MAP_ARRAY(p):
+def p_map_array(p):
   '''MAP_ARRAY : MAP OPENINGCB PIPE ID PIPE DATA_REPEAT_MAP CLOSURECB
+                | MAP OPENINGCB CLOSURECB
+                | MAP OPENINGCB DATA_REPEAT_MAP CLOSURECB
 
     DATA_REPEAT_MAP : DATA_ALLOWED_IN_MAP
                     | DATA_ALLOWED_IN_MAP DATA_REPEAT_MAP
@@ -122,52 +147,80 @@ def p_MAP_ARRAY(p):
     DATA_ALLOWED_IN_MAP : ASIGNATION
                         | EXPRESSION
   '''
+  p[0] = "MAP"
+
 
 # Permite reconocer Hash.
-def p_HASH(p):
+def p_hash(p):
   'HASH : OPENINGCB REGISTRY CLOSURECB'
-  p[0] = 'HASH'
+  if len(p) == 3:
+    p[0] = ('HASH', p[1], p[2], p[3])
+  else:
+    p[0] = ('HASH')
 
 
-def p_REGISTRY(p):
+def p_registry(p):
   'REGISTRY : STRING HASHROCKET KEY'
-  p[0] = 'p_REGISTRY'
+  p[0] = ('REGISTRY', p[1], p[2], p[3])
 
-def p_KEY(p):
+def p_key(p):
   '''KEY : NUMBER
           | STRING
   '''
-  p[0] = p[1]
+  p[0] = ('KEY', p[1])
 
 
 # Funciones que un hash puede llamar
-def p_FUNTIONS_HASH(p):
+def p_funtions_hash(p):
   '''FUNTIONS_HASH : HASH POINT FUNTIONS_ALLOWED_HASH
 
     FUNTIONS_ALLOWED_HASH : HAS_VALUE QUESTION KEY
                           | MERGE LPAREN HASH RPAREN
                           | SIZE
   '''
+  p[0] = "FUNTIONS_HASH"
 
-def p_REGISTRY_ANY(p):
+def p_registry_any(p):
   'REGISTRY : REGISTRY COMMA REGISTRY'
+  if len(p) == 3:
+    p[0] = ('REGISTRY', p[1], p[2], p[3])
+  else:
+    p[0] = ('REGISTRY')
+
 
 # Permite reconocer la estructura de control for
-def p_STRUCTURE_FOR(p):
+def p_structure_for(p):
   ''' STRUCTURE_FOR : STRUCTURE_IN_FOR DATA_REPEAT END
+  '''
+  print('Linea de la data del for', p.lineno(2), p.lexpos(2))
+  p[0] = ('FOR', p[1], p[2], p[3])
 
-      STRUCTURE_IN_FOR : FOR ID IN ARRAY DO
+def p_structure_initial_for(p):
+  ''' STRUCTURE_IN_FOR : FOR ID IN ARRAY DO
                     | FOR ID IN ID DO
+  '''
+  p[0] = ('INITIAL', p[1], p[2], p[3], p[4], p[5])
 
-      DATA_REPEAT : DATA_ALLOWED_IN_FOR
+def p_data_repeat_for(p):
+  '''DATA_REPEAT : DATA_ALLOWED_IN_FOR
                   | DATA_ALLOWED_IN_FOR DATA_REPEAT
+  '''
+  if len(p) == 1:
+    p[0] = ('DATA_IN_FOR', p[1])
+  elif len(p) == 2:
+    p[0] = ('DATA_IN_FOR', p[1], p[2])
+  else:
+    p[0] = ('DATA_IN_FOR')
 
-      DATA_ALLOWED_IN_FOR : ASIGNATION
+
+def p_data_allowed_in_for(p):
+  '''DATA_ALLOWED_IN_FOR : ASIGNATION
                           | EXPRESSION
   '''
+  p[0] = ('DATA', p[1])
 
 # Permite reconocer la estructura de control if
-def p_STRUCTURE_IF(p):
+def p_structure_if(p):
   ''' STRUCTURE_IF : STRUCTURE_IN_IF DATA_REPEAT END
 
       STRUCTURE_IN_IF : IF LPAREN BOOLEAN RPAREN
@@ -179,9 +232,11 @@ def p_STRUCTURE_IF(p):
       DATA_ALLOWED_IN_IF : ASIGNATION
                         | EXPRESSION
   '''
+  p[0] = ('IF')
+
 
 # Permite reconocer la estructura de control While
-def p_STRUCTURE_WHILE(p):
+def p_structure_while(p):
   ''' STRUCTURE_WHILE : STRUCTURE_IN_WHILE DATA_REPEAT END
 
       STRUCTURE_IN_WHILE : WHILE LPAREN TRUE RPAREN
@@ -192,40 +247,45 @@ def p_STRUCTURE_WHILE(p):
       DATA_ALLOWED_IN_WHILE : ASIGNATION
                             | EXPRESSION
   '''
+  p[0] = ('WHILE')
 
-
-def p_DATA(p):
+def p_data(p):
   '''DATA : NUMBER
           | FLOAT
           | BOOLEAN
           | STRING
+          | MINUS NUMBER
+          | MINUS FLOAT
   '''
-  p[0] = p[1]
+  p[0] = ('DATA', p[1])
 
-def p_DATA_ANY(p):
+def p_data_any(p):
   'DATA : DATA COMMA DATA'
+  if len(p) == 3:
+    p[0] = ('VALUE', p[1], p[2], p[3])
+  else:
+    p[0] = ('VALUE')
 
-
-def p_BOOLEAN(p):
+def p_boolean(p):
   '''BOOLEAN : TRUE
             | FALSE
             | LOGIC_NOT TRUE
             | LOGIC_NOT FALSE
   '''
-  p[0] = p[1]
+  p[0] = ('BOOLEAN', p[1])
 
-def p_OPERATOR_MAT(p):
+def p_operator_mat(p):
   '''OPERATOR_MAT : PLUS
                   | MINUS
                   | TIMES
                   | DIVIDE
                   | EXPONENTIATION
   '''
-  p[0] = p[1]
+  p[0] = ('OPERATOR_MAT', p[1])
 
 
 
-def p_OPERATOR_COMP_MAT(p):
+def p_operator_comp_mat(p):
   '''OPERATOR_COMP_MAT : EQUAL
                       | EQUAL_STRICT
                       | GREATER_THAN_OR_EQUAL
@@ -236,28 +296,18 @@ def p_OPERATOR_COMP_MAT(p):
                       | LOGIC_OR
                       | PIPE
   '''
-  p[0] = p[1]
+  p[0] = ('OPERATOR_COMP_MAT', p[1])
 
-def p_OPERATOR_COMP_MAT_ERROR(p):
-  'OPERATOR_COMP_MAT : error'
-  print("Error de sintaxis en la declaracion de operador.")
-  return "Error de sintaxis en la declaracion de operador"
+# def p_operator_comp_mat_error(p):
+#   'OPERATOR_COMP_MAT : error'
+#   print("Error de sintaxis en la declaracion de operador.")
+#   return "Error de sintaxis en la declaracion de operador"
 
 def p_error(p):
   if p:
-    print("Syntax error at token", p.type)
+    return "Syntax error at token" + p.type + "\nLinea " + p.lineno
   else:
-    print("Syntax error at EOF")
+    return "Syntax error at EOF"
 
 # Build the parser
 parser = yacc.yacc()
-
-# while True:
-#   try:
-#     s = raw_input('calc > ')
-#   except EOFError:
-#     break
-#   if not s: continue
-#   result = parser.parse(s)
-#   if result:
-#     print(result)
