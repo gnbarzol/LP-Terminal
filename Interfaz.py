@@ -6,7 +6,7 @@ from sintactico import parser
 
 root = Tk()
 root.title("RUBY")
-root.geometry("650x300") #width height root
+root.geometry("650x575") #width height root
 
 def analyze(data,resul_text_area):
     lexer.input(data)
@@ -67,7 +67,7 @@ etiqueta.place(x=10,y=10, width=100,height=30)
 
 codigo_text_area = tkinter.Text(root, height=7, width=30,)
 codigo_text_area.configure(relief="sunken", borderwidth=1)
-codigo_text_area.place(x=10,y=50,width=250,height=100)
+codigo_text_area.place(x=10,y=50,width=250,height=200)
 
 
 
@@ -84,7 +84,7 @@ boton_sintactico.place(x=450,y=60,width=160,height=75)
 
 result_text_area = tkinter.Text(root, height=5, width=40)
 result_text_area.configure(relief="sunken", borderwidth=1)
-result_text_area.place(x=270,y=160,width=340,height=100)
+result_text_area.place(x=270,y=160,width=340,height=400)
 
 
 
