@@ -34,13 +34,21 @@ def analyzeSintactico(result_text_area):
     archivo = open("prueba.txt", "r")
     for line in archivo:
         if line != "\n":
-            linea = ""
+            if line[:3] == "for" or line[:5] == "while" or line[:2] == "if":
+                nLine = line
+                for Eline in archivo:
+                    nLine += " " + Eline
+                    if Eline[:3] == "end":
+                        break
+                line = nLine
+
             result = parser.parse(line)
-            if result:
+            if result is not None:
                 linea = str(result) + "\n"
+                result_text_area.insert(tkinter.INSERT, linea)
             else:
                 linea = "Error en la sintaxis \n"
-            result_text_area.insert(tkinter.INSERT, linea)
+                result_text_area.insert(tkinter.INSERT, linea)
 
 
 def analizador_lexico(codigo_text_area):
