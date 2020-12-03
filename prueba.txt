@@ -1,3 +1,2 @@
-for i in arr do
-  puts i
-end
+b = a/
+a = (1+) * (2-)*
