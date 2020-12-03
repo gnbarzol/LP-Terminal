@@ -1,6 +1,5 @@
 # Get the token map from the lexer.  This is required.
 from lexico import tokens
-
 import ply.yacc as yacc
 
 
@@ -38,6 +37,7 @@ def p_expression(p):
                 | PUTS EXPRESSION
                 | PUTS ID
                 | FUNCTIONS_STRING
+                | ID PLUS ASIGN DATANF
   '''
   p[0] = ('EXPRESION', p[1])
 
@@ -190,10 +190,12 @@ def p_registry_any(p):
 
 # Permite reconocer la estructura de control for
 def p_structure_for(p):
-  ''' STRUCTURE_FOR : STRUCTURE_IN_FOR DATA_REPEAT END
-  '''
-  print('Linea de la data del for', p.lineno(2), p.lexpos(2))
-  p[0] = ('FOR', p[1], p[2], p[3])
+  ' STRUCTURE_FOR : STRUCTURE_IN_FOR DATA_REPEAT END'
+
+  if len(p) == 4:
+    p[0] = ('FOR', p[1], p[2], p[3])
+  else:
+    p[0] = ('FOR')
 
 def p_structure_initial_for(p):
   ''' STRUCTURE_IN_FOR : FOR ID IN ARRAY DO
@@ -207,8 +209,6 @@ def p_data_repeat_for(p):
   '''
   if len(p) == 1:
     p[0] = ('DATA_IN_FOR', p[1])
-  elif len(p) == 2:
-    p[0] = ('DATA_IN_FOR', p[1], p[2])
   else:
     p[0] = ('DATA_IN_FOR')
 
@@ -221,33 +221,39 @@ def p_data_allowed_in_for(p):
 
 # Permite reconocer la estructura de control if
 def p_structure_if(p):
-  ''' STRUCTURE_IF : STRUCTURE_IN_IF DATA_REPEAT END
+  ''' STRUCTURE_IF : STRUCTURE_IN_IF DATA_REPEAT_IF END
 
-      STRUCTURE_IN_IF : IF LPAREN BOOLEAN RPAREN
+      STRUCTURE_IN_IF : IF LPAREN DATANF OPERATOR_COMP_MAT DATANF RPAREN
 
-      DATA_REPEAT : DATA_ALLOWED_IN_IF
-                  | DATA_ALLOWED_IN_IF DATA_REPEAT
+      DATA_REPEAT_IF : DATA_ALLOWED_IN_IF
+                  | DATA_ALLOWED_IN_IF DATA_REPEAT_IF
                   | DATA_ALLOWED_IN_IF ELSE DATA_ALLOWED_IN_IF
 
       DATA_ALLOWED_IN_IF : ASIGNATION
                         | EXPRESSION
   '''
-  p[0] = ('IF')
+  if len(p) == 4:
+    p[0] = ('IF', p[1], p[2], p[3])
+  else:
+    p[0] = ('IF')
 
 
 # Permite reconocer la estructura de control While
 def p_structure_while(p):
-  ''' STRUCTURE_WHILE : STRUCTURE_IN_WHILE DATA_REPEAT END
+  ''' STRUCTURE_WHILE : STRUCTURE_IN_WHILE DATA_REPEAT_W END
 
-      STRUCTURE_IN_WHILE : WHILE LPAREN TRUE RPAREN
+      STRUCTURE_IN_WHILE : WHILE LPAREN DATANF OPERATOR_COMP_MAT DATANF RPAREN
 
-      DATA_REPEAT : DATA_ALLOWED_IN_WHILE
-                  | DATA_ALLOWED_IN_WHILE DATA_REPEAT
+      DATA_REPEAT_W : DATA_ALLOWED_IN_WHILE
+                  | DATA_ALLOWED_IN_WHILE DATA_REPEAT_W
 
       DATA_ALLOWED_IN_WHILE : ASIGNATION
                             | EXPRESSION
   '''
-  p[0] = ('WHILE')
+  if len(p) == 4:
+    p[0] = ('WHILE', p[1], p[2], p[3])
+  else:
+    p[0] = ('WHILE')
 
 def p_data(p):
   '''DATA : NUMBER
@@ -298,14 +304,9 @@ def p_operator_comp_mat(p):
   '''
   p[0] = ('OPERATOR_COMP_MAT', p[1])
 
-# def p_operator_comp_mat_error(p):
-#   'OPERATOR_COMP_MAT : error'
-#   print("Error de sintaxis en la declaracion de operador.")
-#   return "Error de sintaxis en la declaracion de operador"
-
 def p_error(p):
   if p:
-    return "Syntax error at token" + p.type + "\nLinea " + p.lineno
+    return "Syntax error at token"
   else:
     return "Syntax error at EOF"
 
