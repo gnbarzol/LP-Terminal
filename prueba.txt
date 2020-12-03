@@ -1,6 +1,3 @@
-i=1
-if (1>0)
-  puts" 1 es mayor que 0"
-else
-  puts"la condicion es falsa"
+for i in arr do
+  puts i
 end
